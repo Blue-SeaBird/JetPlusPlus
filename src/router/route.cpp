@@ -4,15 +4,21 @@
 
 namespace JETPP
 {
-    Route::Route(std::string name, std::function<void(Request &, Response &)> callback)
+    Route::Route(std::string name, JETPP::Methods method, std::function<void(Request &, Response &)> callback)
     {
         this->name = name;
+        this->method = method;
         this->callback = callback;
     }
 
     std::string Route::getName()
     {
-        return name;
+        return this->name;
+    }
+
+    JETPP::Methods Route::getMethod()
+    {
+        return this->method;
     }
 
     void Route::execute(Request &request, Response &response)

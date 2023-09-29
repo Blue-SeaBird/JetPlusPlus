@@ -1,5 +1,4 @@
 #include "server.hpp"
-#include <winsock2.h>
 
 #pragma comment(lib, "ws2_32.lib")
 
@@ -76,22 +75,32 @@ namespace JETPP
             std::string request(buffer, bytesRead);
             bool routeMatched = false;
 
+            // Get the method of the request
+            int methodEnd = 0;
+            for (int i = 0; i < request.size(); i++)
+            {
+                if (request[i] == ' ')
+                {
+                    methodEnd = i;
+                    break;
+                }
+            }
+            std::string method = request.substr(0, methodEnd);
+
             // Iterate through all registered routes
             for (int i = 0; i < this->router.getRoutes().size(); i++)
             {
                 if (request.find(this->router.getRoutes()[i].getName()) != std::string::npos)
                 {
                     // Matching route found, set the flag to true
-                    routeMatched = true;
-                    JETPP::Request req;
-                    JETPP::Response res(clientSocket);
-                    this->router.getRoutes()[i].execute(req, res);
-
-                    // Construct and send the response for the matched route
-                    std::string responseMessage = "Hello, Users! Route: " + this->router.getRoutes()[i].getName();
-                    std::string response = "HTTP/1.1 200 OK\r\nContent-Length: " + std::to_string(responseMessage.length()) + "\r\n\r\n" + responseMessage;
-                    // sendResponse(clientSocket, response.c_str());
-                    break;
+                    if (this->router.getRoutes()[i].getMethod() == JETPP::stringToMethod(method))
+                    {
+                        routeMatched = true;
+                        JETPP::Request req;
+                        JETPP::Response res(clientSocket);
+                        this->router.getRoutes()[i].execute(req, res);
+                        break;
+                    }
                 }
             }
 

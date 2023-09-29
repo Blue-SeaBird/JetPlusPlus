@@ -18,6 +18,8 @@ int main()
 
     router.post("/players", [&](JETPP::Request &req, JETPP::Response &res)
                 { res.send(200, "Success for players"); });
+    router.get("/players", [&](JETPP::Request &req, JETPP::Response &res)
+               { res.send(200, "Success for players"); });
 
     // Start the server
     JETPP::Server server(router);

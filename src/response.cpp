@@ -14,8 +14,14 @@ namespace JETPP
     {
         this->status = status;
         std::cout << this->status << " " << message << std::endl;
+
+        // Build and send the message
         std::string response = "HTTP/1.1 200 OK\r\nContent-Length: " + std::to_string(message.length()) + "\r\n\r\n" + message;
         _WINSOCK2_H::send(clientSocket, response.c_str(), strlen(response.c_str()), 0);
+    }
+
+    void Response::sendFile()
+    {
     }
 
 }

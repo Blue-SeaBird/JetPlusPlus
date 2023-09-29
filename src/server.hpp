@@ -2,6 +2,8 @@
 #define SERVER_HPP
 
 #include "router/router.hpp"
+#include "request.hpp"
+#include "response.hpp"
 #include <winsock2.h>
 
 namespace JETPP

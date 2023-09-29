@@ -15,6 +15,7 @@ namespace JETPP
     public:
         Response(SOCKET clientSocket);
         void send(int status, std::string message);
+        void sendFile();
     };
 }
 

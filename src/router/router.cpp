@@ -2,17 +2,18 @@
 
 namespace JETPP
 {
+
     Router::Router() {}
 
     void Router::get(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
-        Route route(routeurl, callback);
+        Route route(routeurl, JETPP::Methods::Get, callback);
         this->routes.push_back(route);
     }
 
     void Router::post(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
-        Route route(routeurl, callback);
+        Route route(routeurl, JETPP::Methods::Post, callback);
         this->routes.push_back(route);
     }
 
