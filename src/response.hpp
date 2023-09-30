@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include <winsock2.h>
-
 namespace JETPP
 {
     class Response
@@ -14,8 +13,10 @@ namespace JETPP
 
     public:
         Response(SOCKET clientSocket);
-        void send(int status, std::string message);
-        void sendFile();
+        void send(std::string message);
+        template <typename T>
+        void send(T &object);
+        void sendFile(std::string path);
     };
 }
 

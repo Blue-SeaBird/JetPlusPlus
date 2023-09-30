@@ -4,22 +4,40 @@
 #include "response.hpp"
 #include <iostream>
 
+class Person
+{
+public:
+    std::string name;
+    int age;
+    Person(std::string name, int age)
+    {
+        this->name = name;
+        this->age = age;
+    }
+};
 int main()
 {
-    // g++ -o D:\Jetpp\src\main.exe main.cpp router/Router.cpp Server.cpp Response.cpp Request.cpp router/Route.cpp -lws2_32
+    // g++ -o D:\Jetpp\src\main.exe main.cpp router/Router.cpp Server.cpp Response.cpp Request.cpp router/Route.cpp methods/methods.cpp -lws2_32
     JETPP::Router router;
 
     // Define a route with a callback function
     router.get("/users", [&](JETPP::Request &req, JETPP::Response &res)
                { 
-                    int status=200;
                     std::string message="Success for users";
-                    res.send(status, message); });
+                    res.send(message); });
 
     router.post("/players", [&](JETPP::Request &req, JETPP::Response &res)
-                { res.send(200, "Success for players"); });
+                { res.send("Success for players"); });
     router.get("/players", [&](JETPP::Request &req, JETPP::Response &res)
-               { res.send(200, "Success for players"); });
+               { res.send("Success for players"); });
+
+    router.get("/file", [&](JETPP::Request &req, JETPP::Response &res)
+               { res.sendFile("D:\\Jetpp\\src\\index.html"); });
+
+    router.get("/object", [&](JETPP::Request &req, JETPP::Response &res)
+               { 
+                Person person("Simon",17);
+                res.send(person); });
 
     // Start the server
     JETPP::Server server(router);
