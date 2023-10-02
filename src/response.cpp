@@ -5,10 +5,10 @@
 #include <fstream>
 #include <vector>
 #include <unordered_map>
+#include <sstream>
 
 namespace JETPP
 {
-
     std::unordered_map<std::string, std::string> mimeTypesToFileExtensions = {
         {".jar", "application/java-archive"},
         {".x12", "application/EDI-X12"},
@@ -36,24 +36,16 @@ namespace JETPP
         {".txt", "text/plain"}};
 
     // https://stackoverflow.com/questions/23714383/what-are-all-the-possible-values-for-http-content-type-header
-    Response::Response(SOCKET clientSocket)
+    Response::Response(_WINSOCK2_H::SOCKET clientSocket)
     {
         this->clientSocket = clientSocket;
     }
 
     void Response::send(std::string message)
     {
-        this->status = status;
-        std::cout << this->status << " " << message << std::endl;
-
         // Build and send the message
         std::string response = "HTTP/1.1 200 OK\r\nContent-Length: " + std::to_string(message.length()) + "\r\n\r\n" + message;
         _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
-    }
-
-    template <typename T>
-    void Response::send(T &object)
-    {
     }
 
     void Response::sendFile(std::string path)
@@ -91,5 +83,10 @@ namespace JETPP
 
         _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0); // send the response
         file.close();
+    }
+
+    void Response::status(int status)
+    {
+        this->statuscode = status;
     }
 }

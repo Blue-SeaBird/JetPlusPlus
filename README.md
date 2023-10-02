@@ -1,4 +1,5 @@
 # JetPlusPlus
+
 C++ REST API
 
-Developed at Blue SeaBird by: @Peeentaa
+Created and developed at Blue SeaBird by: @Peeentaa

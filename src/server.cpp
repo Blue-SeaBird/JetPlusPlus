@@ -70,10 +70,9 @@ namespace JETPP
                 continue;
             }
 
-            // Process the HTTP request here
+            // Process the HTTP request
 
             std::string request(buffer, bytesRead);
-            bool routeMatched = false;
 
             // Get the method of the request
             int methodEnd = 0;
@@ -87,26 +86,27 @@ namespace JETPP
             }
             std::string method = request.substr(0, methodEnd);
 
-            // Iterate through all registered routes
-            for (int i = 0; i < this->router.getRoutes().size(); i++)
+            std::string url;
+            for (int i = methodEnd + 1; i < request.size(); i++)
             {
-                if (request.find(this->router.getRoutes()[i].getName()) != std::string::npos)
+                if (request.at(i) == ' ')
                 {
-                    // Matching route found, set the flag to true
-                    if (this->router.getRoutes()[i].getMethod() == JETPP::stringToMethod(method))
-                    {
-                        routeMatched = true;
-                        JETPP::Request req;
-                        JETPP::Response res(clientSocket);
-                        this->router.getRoutes()[i].execute(req, res);
-                        break;
-                    }
+                    url = request.substr(methodEnd + 1, i - methodEnd - 1);
+                    break;
                 }
             }
 
-            // If no matching route was found, send a 404 response
-            if (!routeMatched)
+            try
             {
+                // Route found
+                Route route = this->router.findRoute(url, stringToMethod(method));
+                Request req(url, route.getName());
+                Response res(clientSocket);
+                route.execute(req, res);
+            }
+            catch (const std::runtime_error &)
+            {
+                // Route not found
                 const char *response = "HTTP/1.1 404 Not Found\r\nContent-Length: 0\r\n\r\n";
                 sendResponse(clientSocket, response);
             }

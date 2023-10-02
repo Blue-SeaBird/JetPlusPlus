@@ -4,17 +4,6 @@
 #include "response.hpp"
 #include <iostream>
 
-class Person
-{
-public:
-    std::string name;
-    int age;
-    Person(std::string name, int age)
-    {
-        this->name = name;
-        this->age = age;
-    }
-};
 int main()
 {
     // g++ -o D:\Jetpp\src\main.exe main.cpp router/Router.cpp Server.cpp Response.cpp Request.cpp router/Route.cpp methods/methods.cpp -lws2_32
@@ -26,19 +15,29 @@ int main()
                     std::string message="Success for users";
                     res.send(message); });
 
+    router.get("/users/:user", [&](JETPP::Request &req, JETPP::Response &res)
+               { 
+                    std::string message="Success for users and :user";
+                    res.send(message); });
+
+    router.get("/users/:user/:password", [&](JETPP::Request &req, JETPP::Response &res)
+               { 
+                    std::string user=req.params["user"];
+                    std::string password=req.params["password"];
+                    std::string message="Success for users and :user"+ user+"and his/her :password="+password;
+                    res.send(message); });
+
+    router.get("/players", [&](JETPP::Request &req, JETPP::Response &res)
+               { 
+                    std::string name=req.query["name"];
+                    res.send("Success for player: "+name); });
     router.post("/players", [&](JETPP::Request &req, JETPP::Response &res)
                 { res.send("Success for players"); });
-    router.get("/players", [&](JETPP::Request &req, JETPP::Response &res)
-               { res.send("Success for players"); });
 
     router.get("/file", [&](JETPP::Request &req, JETPP::Response &res)
                { res.sendFile("D:\\Jetpp\\src\\index.html"); });
 
-    router.get("/object", [&](JETPP::Request &req, JETPP::Response &res)
-               { 
-                Person person("Simon",17);
-                res.send(person); });
-
+    router.get("/object", [&](JETPP::Request &req, JETPP::Response &res) {});
     // Start the server
     JETPP::Server server(router);
     server.start(8000);
