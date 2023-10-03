@@ -11,6 +11,7 @@ namespace JETPP
     {
         this->request = request;
         this->routeurl = routeurl;
+
         // split the urls
         splitString(this->routeurl, this->routeSplitted, '/');
         splitString(request, this->requestSplitted, '/');
@@ -49,7 +50,6 @@ namespace JETPP
                     {
                         if (requestSplitted[i].at(j) == '?')
                         {
-                            std::cout << "start with that: " << this->requestSplitted[i].substr(j + 1, this->requestSplitted[i].size() - j + 1) << std::endl;
                             splitString(this->requestSplitted[i].substr(j + 1, this->requestSplitted[i].size() - j + 1), splittedSegment, '&');
                         }
                     }

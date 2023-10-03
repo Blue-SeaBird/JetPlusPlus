@@ -17,20 +17,21 @@ int main()
 
     router.get("/users/:user", [&](JETPP::Request &req, JETPP::Response &res)
                { 
-                    std::string message="Success for users and :user";
+                    std::string message="Success for users and :user= "+req.params["user"];
                     res.send(message); });
 
     router.get("/users/:user/:password", [&](JETPP::Request &req, JETPP::Response &res)
                { 
                     std::string user=req.params["user"];
                     std::string password=req.params["password"];
-                    std::string message="Success for users and :user"+ user+"and his/her :password="+password;
+                    std::string message="Success for users and :user= "+ user+"and his/her :password= "+password;
                     res.send(message); });
 
     router.get("/players", [&](JETPP::Request &req, JETPP::Response &res)
                { 
                     std::string name=req.query["name"];
-                    res.send("Success for player: "+name); });
+                    std::string id=req.query["id"];
+                    res.send("Success for player: "+name+" with id: "+id); });
     router.post("/players", [&](JETPP::Request &req, JETPP::Response &res)
                 { res.send("Success for players"); });
 

@@ -30,7 +30,12 @@ namespace JETPP
         {
             if (routes[i].getMethod() == method)
             {
-                if (routes[i].getName().find(':') != std::string::npos)
+
+                if (request == routes[i].getName()) // if its not a dynamic url check if the request url is absolute equal to a route
+                {
+                    return routes[i];
+                }
+                else if (routes[i].getName().find(':') != std::string::npos)
                 {
                     bool match = true;
 
@@ -86,7 +91,6 @@ namespace JETPP
                                 {
                                     url += "/";
                                     url += routeSplitted[j].substr(0, k);
-                                    std::cout << url << std::endl;
                                     break;
                                 }
                             }
@@ -96,10 +100,6 @@ namespace JETPP
                     {
                         return routes[i];
                     }
-                }
-                else if (request == routes[i].getName()) // if its not a dynamic url check if the request url is absolute equal to a route
-                {
-                    return routes[i];
                 }
             }
         }
