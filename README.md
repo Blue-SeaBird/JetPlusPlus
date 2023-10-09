@@ -1,5 +1,5 @@
 # JetPlusPlus
 
-C++ REST API
+C++ REST API Framework
 
 Created and developed at Blue SeaBird by: @Peeentaa
