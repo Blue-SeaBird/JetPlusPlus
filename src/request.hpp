@@ -12,16 +12,18 @@ namespace JETPP
     private:
         std::vector<std::string> routeSplitted;
         std::vector<std::string> requestSplitted;
-        std::string request;
+        std::string requesturl;
         std::string routeurl;
         void setQuery();
         void setParams();
+        void setHeaders();
         void splitString(std::string str, std::vector<std::string> &segments, char delimiter);
 
     public:
         std::unordered_map<std::string, std::string> params;
         std::unordered_map<std::string, std::string> query;
-        Request(std::string request, std::string routeurl);
+        std::unordered_map<std::string, std::string> headers;
+        Request(std::string requesturl, std::string routeurl);
     };
 }
 

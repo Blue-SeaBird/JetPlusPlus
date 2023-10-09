@@ -7,14 +7,14 @@
 namespace JETPP
 {
 
-    Request::Request(std::string request, std::string routeurl)
+    Request::Request(std::string requesturl, std::string routeurl)
     {
-        this->request = request;
+        this->requesturl = requesturl;
         this->routeurl = routeurl;
 
         // split the urls
         splitString(this->routeurl, this->routeSplitted, '/');
-        splitString(request, this->requestSplitted, '/');
+        splitString(requesturl, this->requestSplitted, '/');
 
         this->setQuery();
         this->setParams();
@@ -38,7 +38,7 @@ namespace JETPP
 
     void Request::setQuery()
     {
-        if (this->request.find('?') != std::string::npos)
+        if (this->requesturl.find('?') != std::string::npos)
         {
             // check if the segments include a '?' (has a query)
             for (int i = 0; i < this->requestSplitted.size(); i++)

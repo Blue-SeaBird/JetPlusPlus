@@ -23,6 +23,12 @@ namespace JETPP
 
     void Route::execute(Request &request, Response &response)
     {
-        this->callback(request, response); // Execute the callback function
+        try
+        {
+            this->callback(request, response); // Execute the callback function
+        }
+        catch (const std::runtime_error &)
+        {
+        }
     }
 }
