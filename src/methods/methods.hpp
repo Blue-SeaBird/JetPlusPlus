@@ -9,7 +9,6 @@ namespace JETPP
         Patch,
         Delete
     };
-
     Methods stringToMethod(std::string method);
 
 }
