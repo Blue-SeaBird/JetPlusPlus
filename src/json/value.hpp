@@ -22,7 +22,7 @@ namespace JETPP
 
         // Constructors
         JsonValue();
-        JsonValue(const std::string &value);
+        JsonValue(const char *value);
         JsonValue(double value);
         JsonValue(bool value);
 

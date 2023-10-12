@@ -6,22 +6,19 @@ namespace JETPP
 {
 
     // Constructors
-    JsonValue::JsonValue() : type(NULL_VALUE), asNumber(0), asBoolean(false) {}
+    JsonValue::JsonValue() {}
 
-    JsonValue::JsonValue(const std::string &value)
+    JsonValue::JsonValue(const char *value)
     {
-        this->type = STRING;
-        asString = value;
+        setString(value);
     }
     JsonValue::JsonValue(double value)
     {
-        this->type = NUMBER;
-        asNumber = value;
+        setNumber(value);
     }
     JsonValue::JsonValue(bool value)
     {
-        this->type = BOOLEAN;
-        asBoolean = value;
+        setBoolean(value);
     }
 
     // Methods to set values
@@ -58,7 +55,7 @@ namespace JETPP
     // Method to convert JSON value to JSON string
     std::string JsonValue::toJsonString() const
     {
-        switch (this->type)
+        switch (type)
         {
         case OBJECT:
         {
