@@ -14,7 +14,22 @@ namespace JETPP
 
     void Router::post(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
-        Route route(routeurl, JETPP::Methods::Post, callback);
+        // Create a POST route
+        Route postRoute(routeurl, JETPP::Methods::Post, callback);
+        this->routes.push_back(postRoute);
+
+        options(routeurl, [&](Request &req, Response &res)
+                {
+                    // Set OPTIONS headers as needed
+                    res.addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+                    res.addHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
+                    res.send(""); // Send an empty response for OPTIONS
+                });
+    }
+
+    void Router::options(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
+    {
+        Route route(routeurl, JETPP::Methods::Options, callback);
         this->routes.push_back(route);
     }
 

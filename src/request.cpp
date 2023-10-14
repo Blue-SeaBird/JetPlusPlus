@@ -7,10 +7,11 @@
 namespace JETPP
 {
 
-    Request::Request(std::string requesturl, std::string routeurl)
+    Request::Request(std::string requesturl, std::string routeurl, std::string request)
     {
         this->requesturl = requesturl;
         this->routeurl = routeurl;
+        this->request = request;
 
         // split the urls
         splitString(this->routeurl, this->routeSplitted, '/');
@@ -18,6 +19,7 @@ namespace JETPP
 
         this->setQuery();
         this->setParams();
+        this->setBody();
     }
 
     void Request::setParams()
@@ -64,6 +66,25 @@ namespace JETPP
                 }
             }
         }
+    }
+
+    void Request::setBody()
+    {
+        size_t bodyStart = request.find("\r\n\r\n");
+        if (bodyStart != std::string::npos)
+        {
+            size_t contentLengthPos = request.find("Content-Length: ");
+            if (contentLengthPos != std::string::npos)
+            {
+                size_t bodyLength = std::stoi(request.substr(contentLengthPos + 16, bodyStart - contentLengthPos - 16));
+                // Extract the request body
+                this->body = request.substr(bodyStart + 4, bodyLength);
+            }
+        }
+    }
+
+    void Request::setHeaders()
+    {
     }
 
     void Request::splitString(std::string str, std::vector<std::string> &segments, char delimiter)

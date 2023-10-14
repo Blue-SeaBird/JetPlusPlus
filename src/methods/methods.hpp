@@ -7,7 +7,8 @@ namespace JETPP
         Get,
         Post,
         Patch,
-        Delete
+        Delete,
+        Options
     };
     Methods stringToMethod(std::string method);
 

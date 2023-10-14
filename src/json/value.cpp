@@ -6,7 +6,9 @@ namespace JETPP
 {
 
     // Constructors
-    JsonValue::JsonValue() {}
+    JsonValue::JsonValue()
+    {
+    }
 
     JsonValue::JsonValue(const char *value)
     {

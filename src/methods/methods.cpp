@@ -16,7 +16,13 @@ namespace JETPP
             return JETPP::Methods::Patch;
         else if (method == "DELETE")
             return JETPP::Methods::Delete;
+        else if (method == "OPTIONS")
+            return JETPP::Methods::Options;
         else
+        {
+            std::cerr << "Unsupported method: " << method << std::endl;
             throw std::invalid_argument("Invalid method");
+        }
     }
+
 }

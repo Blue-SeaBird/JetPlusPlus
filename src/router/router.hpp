@@ -17,6 +17,7 @@ namespace JETPP
 
         void get(const std::string &routeurl, std::function<void(Request &, Response &)> callback);
         void post(const std::string &routeurl, std::function<void(Request &, Response &)> callback);
+        void options(const std::string &routeurl, std::function<void(Request &, Response &)> callback);
         std::vector<Route> getRoutes();
         Route findRoute(std::string request, JETPP::Methods method);
 
