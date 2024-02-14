@@ -3,7 +3,11 @@
 
 #include <iostream>
 #include <string>
-#include <winsock2.h>
+#include <vector>
+
+#include <sys/socket.h>
+#include <netinet/in.h>
+
 #include "json/value.hpp"
 
 namespace JETPP
@@ -12,11 +16,11 @@ namespace JETPP
     {
     private:
         int statuscode;
-        SOCKET clientSocket;
+        int clientSocket;
         std::vector<std::string> header;
 
     public:
-        Response(SOCKET clientSocket);
+        Response(int clientSocket);
         void send(std::string message);
         void sendFile(std::string path);
         JETPP::Response status(int status);

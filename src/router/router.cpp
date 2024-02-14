@@ -6,19 +6,19 @@ namespace JETPP
 
     Router::Router() {}
 
-    void Router::get(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
+    void Router::get(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
         Route route(routeurl, JETPP::Methods::Get, callback);
         this->routes.push_back(route);
     }
 
-    void Router::post(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
+    void Router::post(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
         // Create a POST route
         Route postRoute(routeurl, JETPP::Methods::Post, callback);
         this->routes.push_back(postRoute);
 
-        options(routeurl, [&](Request &req, Response &res)
+        options(routeurl, [](Request &req, Response &res)
                 {
                     // Set OPTIONS headers as needed
                     res.addHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
@@ -27,7 +27,7 @@ namespace JETPP
                 });
     }
 
-    void Router::options(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
+    void Router::options(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
         Route route(routeurl, JETPP::Methods::Options, callback);
         this->routes.push_back(route);

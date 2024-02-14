@@ -4,7 +4,6 @@
 #include "route.hpp"
 #include <string>
 #include <vector>
-#include <functional>
 #include "../request.hpp"
 #include "../response.hpp"
 
@@ -15,9 +14,9 @@ namespace JETPP
     public:
         Router();
 
-        void get(const std::string &routeurl, std::function<void(Request &, Response &)> callback);
-        void post(const std::string &routeurl, std::function<void(Request &, Response &)> callback);
-        void options(const std::string &routeurl, std::function<void(Request &, Response &)> callback);
+        void get(const std::string &routeurl, void (*callback)(Request &, Response &));
+        void post(const std::string &routeurl, void (*callback)(Request &, Response &));
+        void options(const std::string &routeurl, void (*callback)(Request &, Response &));
         std::vector<Route> getRoutes();
         Route findRoute(std::string request, JETPP::Methods method);
 

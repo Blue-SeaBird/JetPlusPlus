@@ -5,6 +5,7 @@
 #include <vector>
 #include <unordered_map>
 #include <sstream>
+#include <unistd.h>
 
 namespace JETPP
 {
@@ -35,7 +36,7 @@ namespace JETPP
         {".txt", "text/plain"}};
 
     // Constructor
-    Response::Response(SOCKET clientSocket)
+    Response::Response(int clientSocket)
     {
         this->clientSocket = clientSocket;
     }
@@ -62,13 +63,13 @@ namespace JETPP
             response += "\r\n\r\n" + message;
 
             // Send the response
-            _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
+            ::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
         }
         catch (const std::runtime_error &)
         {
             // Handle errors
             std::string response = "HTTP/1.1 500 Internal server error\r\nContent-Length: 0\r\n\r\n";
-            _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
+            ::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
         }
     }
 
@@ -116,14 +117,14 @@ namespace JETPP
             response += std::string(buffer.begin(), buffer.end());
 
             // Send the response
-            _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
+            ::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
             file.close();
         }
         catch (const std::runtime_error &)
         {
             // Handle errors
             std::string response = "HTTP/1.1 500 Internal server error\r\nContent-Length: 0\r\n\r\n";
-            _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
+            ::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
         }
     }
 
@@ -145,13 +146,13 @@ namespace JETPP
             response += "\r\n\r\n" + message;
 
             // Send the response
-            _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
+            ::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
         }
         catch (const std::runtime_error &)
         {
             // Handle errors
             std::string response = "HTTP/1.1 500 Internal server error\r\nContent-Length: 0\r\n\r\n";
-            _WINSOCK2_H::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
+            ::send(this->clientSocket, response.c_str(), strlen(response.c_str()), 0);
         }
     }
 

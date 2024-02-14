@@ -4,7 +4,10 @@
 #include "router/router.hpp"
 #include "request.hpp"
 #include "response.hpp"
-#include <winsock2.h>
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <unistd.h>
+#include <thread>
 
 namespace JETPP
 {
@@ -13,11 +16,12 @@ namespace JETPP
     private:
         Router router;
         int port;
+        void handleClient(int clientSocket);
 
     public:
         Server(Router router);
         void start(int port);
-        void sendResponse(SOCKET clientSocket, const char *response);
+        void sendResponse(int clientSocket, const char *response); // Change SOCKET to int
     };
 }
 
