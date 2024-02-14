@@ -3,6 +3,7 @@
 #include "request.hpp"
 #include "response.hpp"
 #include <iostream>
+#include <filesystem>
 #include "json/value.hpp"
 
 int main()
@@ -47,11 +48,6 @@ int main()
         json2.setObject({ {"message2",json3 }});
         jsonResponse.setObject({{"message", json2} });
         res.json(jsonResponse); });
-
-    router.get("/file", [](JETPP::Request &req, JETPP::Response &res)
-               { res.sendFile("./index.html"); });
-
-    router.get("/object", [](JETPP::Request &req, JETPP::Response &res) {});
     // Start the server
     JETPP::Server server(router);
     server.start(8000);

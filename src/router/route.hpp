@@ -12,7 +12,7 @@ namespace JETPP
     class Route
     {
     public:
-        Route(std::string name, JETPP::Methods method, std::function<void(Request &, Response &)> callback);
+        Route(std::string name, JETPP::Methods method, void (*callback)(Request &, Response &));
 
         std::string getName();
         JETPP::Methods getMethod();
@@ -21,7 +21,7 @@ namespace JETPP
     private:
         std::string name;
         JETPP::Methods method;
-        std::function<void(Request &, Response &)> callback;
+        void (*callback)(Request &, Response &);
     };
 }
 

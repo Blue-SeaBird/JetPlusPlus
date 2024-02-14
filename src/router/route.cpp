@@ -4,7 +4,7 @@
 
 namespace JETPP
 {
-    Route::Route(std::string name, JETPP::Methods method, std::function<void(Request &, Response &)> callback)
+    Route::Route(std::string name, JETPP::Methods method, void (*callback)(Request &, Response &))
     {
         this->name = name;
         this->method = method;
