@@ -12,7 +12,6 @@ namespace JETPP
         this->requesturl = requesturl;
         this->routeurl = routeurl;
         this->request = request;
-
         // split the urls
         splitString(this->routeurl, this->routeSplitted, '/');
         splitString(requesturl, this->requestSplitted, '/');

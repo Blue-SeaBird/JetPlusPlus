@@ -15,7 +15,6 @@ namespace JETPP
         std::string requesturl;
         std::string routeurl;
         std::string request;
-        std::string body;
         void setQuery();
         void setParams();
         void setHeaders();
@@ -26,6 +25,7 @@ namespace JETPP
         std::unordered_map<std::string, std::string> params;
         std::unordered_map<std::string, std::string> query;
         std::unordered_map<std::string, std::string> headers;
+        std::string body;
         Request(std::string requesturl, std::string routeurl, std::string request);
     };
 }
