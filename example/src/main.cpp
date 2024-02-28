@@ -3,8 +3,8 @@
 
 int main(){
     JETPP::Router router;
-    router.get("/test",[](JETPP::Request &req, JETPP::Response &res){
-        res.send("Hello World");
+    router.post("/test",[](JETPP::Request &req, JETPP::Response &res){
+        res.send(req.body);
     });
 
     JETPP::Server server(router);

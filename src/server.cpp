@@ -70,6 +70,7 @@ namespace JETPP
         char buffer[1024];
         std::string request;
         int totalBytesRead = 0;
+        std::string requestBody;
 
         while (true)
             {
@@ -110,7 +111,6 @@ namespace JETPP
                     }
                 }
             }
-
             if (!request.empty())
             {
                 int methodEnd = request.find(' ');
