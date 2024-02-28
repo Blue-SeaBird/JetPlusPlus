@@ -83,129 +83,18 @@ CMakeFiles/main.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/main.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/main.cpp -o CMakeFiles/main.dir/src/main.cpp.s
 
-CMakeFiles/main.dir/src/router/Router.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/router/Router.cpp.o: /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Router.cpp
-CMakeFiles/main.dir/src/router/Router.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/main.dir/src/router/Router.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/router/Router.cpp.o -MF CMakeFiles/main.dir/src/router/Router.cpp.o.d -o CMakeFiles/main.dir/src/router/Router.cpp.o -c /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Router.cpp
-
-CMakeFiles/main.dir/src/router/Router.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/router/Router.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Router.cpp > CMakeFiles/main.dir/src/router/Router.cpp.i
-
-CMakeFiles/main.dir/src/router/Router.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/router/Router.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Router.cpp -o CMakeFiles/main.dir/src/router/Router.cpp.s
-
-CMakeFiles/main.dir/src/Server.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/Server.cpp.o: /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Server.cpp
-CMakeFiles/main.dir/src/Server.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/main.dir/src/Server.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/Server.cpp.o -MF CMakeFiles/main.dir/src/Server.cpp.o.d -o CMakeFiles/main.dir/src/Server.cpp.o -c /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Server.cpp
-
-CMakeFiles/main.dir/src/Server.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Server.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Server.cpp > CMakeFiles/main.dir/src/Server.cpp.i
-
-CMakeFiles/main.dir/src/Server.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Server.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Server.cpp -o CMakeFiles/main.dir/src/Server.cpp.s
-
-CMakeFiles/main.dir/src/Response.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/Response.cpp.o: /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Response.cpp
-CMakeFiles/main.dir/src/Response.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/main.dir/src/Response.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/Response.cpp.o -MF CMakeFiles/main.dir/src/Response.cpp.o.d -o CMakeFiles/main.dir/src/Response.cpp.o -c /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Response.cpp
-
-CMakeFiles/main.dir/src/Response.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Response.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Response.cpp > CMakeFiles/main.dir/src/Response.cpp.i
-
-CMakeFiles/main.dir/src/Response.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Response.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Response.cpp -o CMakeFiles/main.dir/src/Response.cpp.s
-
-CMakeFiles/main.dir/src/Request.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/Request.cpp.o: /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Request.cpp
-CMakeFiles/main.dir/src/Request.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/main.dir/src/Request.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/Request.cpp.o -MF CMakeFiles/main.dir/src/Request.cpp.o.d -o CMakeFiles/main.dir/src/Request.cpp.o -c /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Request.cpp
-
-CMakeFiles/main.dir/src/Request.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/Request.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Request.cpp > CMakeFiles/main.dir/src/Request.cpp.i
-
-CMakeFiles/main.dir/src/Request.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/Request.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/Request.cpp -o CMakeFiles/main.dir/src/Request.cpp.s
-
-CMakeFiles/main.dir/src/router/Route.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/router/Route.cpp.o: /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Route.cpp
-CMakeFiles/main.dir/src/router/Route.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/main.dir/src/router/Route.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/router/Route.cpp.o -MF CMakeFiles/main.dir/src/router/Route.cpp.o.d -o CMakeFiles/main.dir/src/router/Route.cpp.o -c /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Route.cpp
-
-CMakeFiles/main.dir/src/router/Route.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/router/Route.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Route.cpp > CMakeFiles/main.dir/src/router/Route.cpp.i
-
-CMakeFiles/main.dir/src/router/Route.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/router/Route.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/router/Route.cpp -o CMakeFiles/main.dir/src/router/Route.cpp.s
-
-CMakeFiles/main.dir/src/methods/methods.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/methods/methods.cpp.o: /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/methods/methods.cpp
-CMakeFiles/main.dir/src/methods/methods.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/main.dir/src/methods/methods.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/methods/methods.cpp.o -MF CMakeFiles/main.dir/src/methods/methods.cpp.o.d -o CMakeFiles/main.dir/src/methods/methods.cpp.o -c /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/methods/methods.cpp
-
-CMakeFiles/main.dir/src/methods/methods.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/methods/methods.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/methods/methods.cpp > CMakeFiles/main.dir/src/methods/methods.cpp.i
-
-CMakeFiles/main.dir/src/methods/methods.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/methods/methods.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/methods/methods.cpp -o CMakeFiles/main.dir/src/methods/methods.cpp.s
-
-CMakeFiles/main.dir/src/json/value.cpp.o: CMakeFiles/main.dir/flags.make
-CMakeFiles/main.dir/src/json/value.cpp.o: /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/json/value.cpp
-CMakeFiles/main.dir/src/json/value.cpp.o: CMakeFiles/main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/main.dir/src/json/value.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/main.dir/src/json/value.cpp.o -MF CMakeFiles/main.dir/src/json/value.cpp.o.d -o CMakeFiles/main.dir/src/json/value.cpp.o -c /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/json/value.cpp
-
-CMakeFiles/main.dir/src/json/value.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/main.dir/src/json/value.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/json/value.cpp > CMakeFiles/main.dir/src/json/value.cpp.i
-
-CMakeFiles/main.dir/src/json/value.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/main.dir/src/json/value.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/src/json/value.cpp -o CMakeFiles/main.dir/src/json/value.cpp.s
-
 # Object files for target main
 main_OBJECTS = \
-"CMakeFiles/main.dir/src/main.cpp.o" \
-"CMakeFiles/main.dir/src/router/Router.cpp.o" \
-"CMakeFiles/main.dir/src/Server.cpp.o" \
-"CMakeFiles/main.dir/src/Response.cpp.o" \
-"CMakeFiles/main.dir/src/Request.cpp.o" \
-"CMakeFiles/main.dir/src/router/Route.cpp.o" \
-"CMakeFiles/main.dir/src/methods/methods.cpp.o" \
-"CMakeFiles/main.dir/src/json/value.cpp.o"
+"CMakeFiles/main.dir/src/main.cpp.o"
 
 # External object files for target main
 main_EXTERNAL_OBJECTS =
 
 main: CMakeFiles/main.dir/src/main.cpp.o
-main: CMakeFiles/main.dir/src/router/Router.cpp.o
-main: CMakeFiles/main.dir/src/Server.cpp.o
-main: CMakeFiles/main.dir/src/Response.cpp.o
-main: CMakeFiles/main.dir/src/Request.cpp.o
-main: CMakeFiles/main.dir/src/router/Route.cpp.o
-main: CMakeFiles/main.dir/src/methods/methods.cpp.o
-main: CMakeFiles/main.dir/src/json/value.cpp.o
 main: CMakeFiles/main.dir/build.make
+main: libJetPlusPlusLib.a
 main: CMakeFiles/main.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

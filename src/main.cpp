@@ -1,14 +1,14 @@
-#include "router/router.hpp"
-#include "server.hpp"
-#include "request.hpp"
-#include "response.hpp"
+#include "../include/router/router.hpp"
+#include "../include/server/server.hpp"
+#include "../include/server/request.hpp"
+#include "../include/server/response.hpp"
+#include "../include/container/container.hpp"
 #include <iostream>
 #include <filesystem>
-#include "json/value.hpp"
+#include "../include/json/value.hpp"
 
 int main()
 {
-    // g++ -o .\main.exe main.cpp router/Router.cpp Server.cpp Response.cpp Request.cpp router/Route.cpp methods/methods.cpp json/value.cpp
     JETPP::Router router;
 
     // Define a route with a callback function
@@ -22,10 +22,13 @@ int main()
         jsonResponse.setObject({{"message", json2} });
         res.status(200).json(jsonResponse); });
 
+    JETPP::Container userProxyContainer;
+    userProxyContainer.addAccessHost("127.0.0.1");
+
     router.get("/users/:user", [](JETPP::Request &req, JETPP::Response &res)
                { 
                     std::string message="Success for users and :user= "+req.params["user"];
-                    res.send(message); });
+                    res.send(message); }, userProxyContainer);
 
     router.get("/users/:user/:password", [](JETPP::Request &req, JETPP::Response &res)
                { 
@@ -39,6 +42,7 @@ int main()
                     std::string name=req.query["name"];
                     std::string id=req.query["id"];
                     res.send("Success for player: "+name+" with id: "+id); });
+
     router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
                 {
                     JETPP::JsonValue jsonResponse;
@@ -48,6 +52,7 @@ int main()
         json2.setObject({ {"message2",json3 }});
         jsonResponse.setObject({{"message", json2} });
         res.json(jsonResponse); });
+
     // Start the server
     JETPP::Server server(router);
     server.start(8000);

@@ -1,11 +1,13 @@
 #ifndef SERVER_HPP
 #define SERVER_HPP
 
-#include "router/router.hpp"
-#include "request.hpp"
-#include "response.hpp"
+#include "../router/router.hpp"
+#include "../server/request.hpp"
+#include "../server/response.hpp"
+#include <optional>
 #include <sys/socket.h>
 #include <netinet/in.h>
+#include <arpa/inet.h>
 #include <unistd.h>
 #include <thread>
 
@@ -22,6 +24,7 @@ namespace JETPP
         Server(Router router);
         void start(int port);
         void sendResponse(int clientSocket, const char *response); // Change SOCKET to int
+        std::string getFullClientAddress(int clientSocket);
     };
 }
 

@@ -1,15 +1,10 @@
-#include "server.hpp"
+#include "../include/server/server.hpp"
 
 namespace JETPP
 {
     Server::Server(Router router)
     {
         this->router = router;
-    }
-
-    void Server::sendResponse(int clientSocket, const char *response)
-    {
-        send(clientSocket, response, strlen(response), 0);
     }
 
     void Server::start(int port)
@@ -41,6 +36,16 @@ namespace JETPP
         }
 
         std::cout << "Server is listening on port " << port << std::endl;
+
+        std::cout << "\033[0;34m";
+        std::cout << "     ____.       __    __________.__                 __________.__                " << std::endl;
+        std::cout << "    |    | _____/  |_  \\______   \\  |  __ __  ______ \\______   \\  |  __ __  ______" << std::endl;
+        std::cout << "    |    |/ __ \\   __\\  |     ___/  | |  |  \\/  ___/  |     ___/  | |  |  \\/  ___/" << std::endl;
+        std::cout << "/\\__|    \\  ___/|  |    |    |   |  |_|  |  /\\___ \\   |    |   |  |_|  |  /\\___ \\ " << std::endl;
+        std::cout << "\\________|\\___  >__|    |____|   |____/____//____  >  |____|   |____/____//____  >" << std::endl;
+        std::cout << "              \\/                                 \\/                            \\/ " << std::endl;
+        std::cout << "\033[0m"; 
+
 
         while (true)
         {
@@ -77,7 +82,7 @@ namespace JETPP
                 }
                 else if (bytesRead == 0)
                 {
-                    // Connection closed by the client
+                    // connection closed by the client
                     close(clientSocket);
                     break;
                 }
@@ -125,10 +130,18 @@ namespace JETPP
 
                     try
                     {
-                        Route route = this->router.findRoute(url, stringToMethod(method));
-                        Request req(url, route.getName(), request);
-                        Response res(clientSocket);
-                        route.execute(req, res);
+                        std::string clientAddress=getFullClientAddress(clientSocket);
+                        std::optional<Route> optRoute = this->router.findRoute(url, stringToMethod(method), clientAddress);
+                        if(!optRoute.has_value()){
+                            const char *response = "HTTP/1.1 401 Unauthorized\r\nContent-Length: 0\r\n\r\n";
+                            sendResponse(clientSocket, response);
+                        }
+                        else{
+                            Route route=optRoute.value();
+                            Request req(url, route.getName(), request);
+                            Response res(clientSocket);
+                            route.execute(req, res);
+                        }
                     }
                     catch (const std::runtime_error &)
                     {
@@ -139,5 +152,35 @@ namespace JETPP
             }
 
         close(clientSocket); // close the client socket when done
+    }
+
+    void Server::sendResponse(int clientSocket, const char *response)
+    {
+        send(clientSocket, response, strlen(response), 0);
+    }
+
+    std::string Server::getFullClientAddress(int clientSocket)
+    {
+        sockaddr_in clientAddress;
+        socklen_t clientAddrLen = sizeof(clientAddress);
+
+        // retrieve client's address information
+        if (getpeername(clientSocket, (struct sockaddr*)&clientAddress, &clientAddrLen) == -1)
+        {
+            std::cerr << "Failed to get client address" << std::endl;
+            close(clientSocket);
+            return nullptr;
+        }
+
+        char clientIP[INET_ADDRSTRLEN];
+        if (inet_ntop(AF_INET, &(clientAddress.sin_addr), clientIP, INET_ADDRSTRLEN) == NULL)
+        {
+            std::cerr << "Failed to convert client address to string" << std::endl;
+            close(clientSocket);
+            return nullptr;
+        }
+        std::string fullAddress=std::string(clientIP)+ ":" +std::to_string(clientAddress.sin_port);
+
+        return fullAddress;
     }
 }
