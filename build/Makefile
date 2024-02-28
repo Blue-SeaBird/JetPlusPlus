@@ -117,96 +117,48 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named main
+# Target rules for targets named JetPlusPlusLib
 
 # Build rule for target.
-main: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 main
-.PHONY : main
+JetPlusPlusLib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 JetPlusPlusLib
+.PHONY : JetPlusPlusLib
 
 # fast build rule for target.
-main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-.PHONY : main/fast
+JetPlusPlusLib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/build
+.PHONY : JetPlusPlusLib/fast
 
-src/Request.o: src/Request.cpp.o
-.PHONY : src/Request.o
-
-# target to build an object file
-src/Request.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Request.cpp.o
-.PHONY : src/Request.cpp.o
-
-src/Request.i: src/Request.cpp.i
-.PHONY : src/Request.i
-
-# target to preprocess a source file
-src/Request.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Request.cpp.i
-.PHONY : src/Request.cpp.i
-
-src/Request.s: src/Request.cpp.s
-.PHONY : src/Request.s
-
-# target to generate assembly for a file
-src/Request.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Request.cpp.s
-.PHONY : src/Request.cpp.s
-
-src/Response.o: src/Response.cpp.o
-.PHONY : src/Response.o
+src/container/container.o: src/container/container.cpp.o
+.PHONY : src/container/container.o
 
 # target to build an object file
-src/Response.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Response.cpp.o
-.PHONY : src/Response.cpp.o
+src/container/container.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/container/container.cpp.o
+.PHONY : src/container/container.cpp.o
 
-src/Response.i: src/Response.cpp.i
-.PHONY : src/Response.i
-
-# target to preprocess a source file
-src/Response.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Response.cpp.i
-.PHONY : src/Response.cpp.i
-
-src/Response.s: src/Response.cpp.s
-.PHONY : src/Response.s
-
-# target to generate assembly for a file
-src/Response.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Response.cpp.s
-.PHONY : src/Response.cpp.s
-
-src/Server.o: src/Server.cpp.o
-.PHONY : src/Server.o
-
-# target to build an object file
-src/Server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Server.cpp.o
-.PHONY : src/Server.cpp.o
-
-src/Server.i: src/Server.cpp.i
-.PHONY : src/Server.i
+src/container/container.i: src/container/container.cpp.i
+.PHONY : src/container/container.i
 
 # target to preprocess a source file
-src/Server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Server.cpp.i
-.PHONY : src/Server.cpp.i
+src/container/container.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/container/container.cpp.i
+.PHONY : src/container/container.cpp.i
 
-src/Server.s: src/Server.cpp.s
-.PHONY : src/Server.s
+src/container/container.s: src/container/container.cpp.s
+.PHONY : src/container/container.s
 
 # target to generate assembly for a file
-src/Server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/Server.cpp.s
-.PHONY : src/Server.cpp.s
+src/container/container.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/container/container.cpp.s
+.PHONY : src/container/container.cpp.s
 
 src/json/value.o: src/json/value.cpp.o
 .PHONY : src/json/value.o
 
 # target to build an object file
 src/json/value.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/json/value.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/json/value.cpp.o
 .PHONY : src/json/value.cpp.o
 
 src/json/value.i: src/json/value.cpp.i
@@ -214,7 +166,7 @@ src/json/value.i: src/json/value.cpp.i
 
 # target to preprocess a source file
 src/json/value.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/json/value.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/json/value.cpp.i
 .PHONY : src/json/value.cpp.i
 
 src/json/value.s: src/json/value.cpp.s
@@ -222,7 +174,7 @@ src/json/value.s: src/json/value.cpp.s
 
 # target to generate assembly for a file
 src/json/value.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/json/value.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/json/value.cpp.s
 .PHONY : src/json/value.cpp.s
 
 src/main.o: src/main.cpp.o
@@ -230,7 +182,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -238,7 +190,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -246,7 +198,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 src/methods/methods.o: src/methods/methods.cpp.o
@@ -254,7 +206,7 @@ src/methods/methods.o: src/methods/methods.cpp.o
 
 # target to build an object file
 src/methods/methods.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/methods/methods.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/methods/methods.cpp.o
 .PHONY : src/methods/methods.cpp.o
 
 src/methods/methods.i: src/methods/methods.cpp.i
@@ -262,7 +214,7 @@ src/methods/methods.i: src/methods/methods.cpp.i
 
 # target to preprocess a source file
 src/methods/methods.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/methods/methods.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/methods/methods.cpp.i
 .PHONY : src/methods/methods.cpp.i
 
 src/methods/methods.s: src/methods/methods.cpp.s
@@ -270,56 +222,128 @@ src/methods/methods.s: src/methods/methods.cpp.s
 
 # target to generate assembly for a file
 src/methods/methods.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/methods/methods.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/methods/methods.cpp.s
 .PHONY : src/methods/methods.cpp.s
 
-src/router/Route.o: src/router/Route.cpp.o
-.PHONY : src/router/Route.o
+src/request.o: src/request.cpp.o
+.PHONY : src/request.o
 
 # target to build an object file
-src/router/Route.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/router/Route.cpp.o
-.PHONY : src/router/Route.cpp.o
+src/request.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/request.cpp.o
+.PHONY : src/request.cpp.o
 
-src/router/Route.i: src/router/Route.cpp.i
-.PHONY : src/router/Route.i
+src/request.i: src/request.cpp.i
+.PHONY : src/request.i
 
 # target to preprocess a source file
-src/router/Route.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/router/Route.cpp.i
-.PHONY : src/router/Route.cpp.i
+src/request.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/request.cpp.i
+.PHONY : src/request.cpp.i
 
-src/router/Route.s: src/router/Route.cpp.s
-.PHONY : src/router/Route.s
+src/request.s: src/request.cpp.s
+.PHONY : src/request.s
 
 # target to generate assembly for a file
-src/router/Route.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/router/Route.cpp.s
-.PHONY : src/router/Route.cpp.s
+src/request.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/request.cpp.s
+.PHONY : src/request.cpp.s
 
-src/router/Router.o: src/router/Router.cpp.o
-.PHONY : src/router/Router.o
+src/response.o: src/response.cpp.o
+.PHONY : src/response.o
 
 # target to build an object file
-src/router/Router.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/router/Router.cpp.o
-.PHONY : src/router/Router.cpp.o
+src/response.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/response.cpp.o
+.PHONY : src/response.cpp.o
 
-src/router/Router.i: src/router/Router.cpp.i
-.PHONY : src/router/Router.i
+src/response.i: src/response.cpp.i
+.PHONY : src/response.i
 
 # target to preprocess a source file
-src/router/Router.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/router/Router.cpp.i
-.PHONY : src/router/Router.cpp.i
+src/response.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/response.cpp.i
+.PHONY : src/response.cpp.i
 
-src/router/Router.s: src/router/Router.cpp.s
-.PHONY : src/router/Router.s
+src/response.s: src/response.cpp.s
+.PHONY : src/response.s
 
 # target to generate assembly for a file
-src/router/Router.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/src/router/Router.cpp.s
-.PHONY : src/router/Router.cpp.s
+src/response.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/response.cpp.s
+.PHONY : src/response.cpp.s
+
+src/router/route.o: src/router/route.cpp.o
+.PHONY : src/router/route.o
+
+# target to build an object file
+src/router/route.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/router/route.cpp.o
+.PHONY : src/router/route.cpp.o
+
+src/router/route.i: src/router/route.cpp.i
+.PHONY : src/router/route.i
+
+# target to preprocess a source file
+src/router/route.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/router/route.cpp.i
+.PHONY : src/router/route.cpp.i
+
+src/router/route.s: src/router/route.cpp.s
+.PHONY : src/router/route.s
+
+# target to generate assembly for a file
+src/router/route.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/router/route.cpp.s
+.PHONY : src/router/route.cpp.s
+
+src/router/router.o: src/router/router.cpp.o
+.PHONY : src/router/router.o
+
+# target to build an object file
+src/router/router.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/router/router.cpp.o
+.PHONY : src/router/router.cpp.o
+
+src/router/router.i: src/router/router.cpp.i
+.PHONY : src/router/router.i
+
+# target to preprocess a source file
+src/router/router.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/router/router.cpp.i
+.PHONY : src/router/router.cpp.i
+
+src/router/router.s: src/router/router.cpp.s
+.PHONY : src/router/router.s
+
+# target to generate assembly for a file
+src/router/router.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/router/router.cpp.s
+.PHONY : src/router/router.cpp.s
+
+src/server.o: src/server.cpp.o
+.PHONY : src/server.o
+
+# target to build an object file
+src/server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/server.cpp.o
+.PHONY : src/server.cpp.o
+
+src/server.i: src/server.cpp.i
+.PHONY : src/server.i
+
+# target to preprocess a source file
+src/server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/server.cpp.i
+.PHONY : src/server.cpp.i
+
+src/server.s: src/server.cpp.s
+.PHONY : src/server.s
+
+# target to generate assembly for a file
+src/server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/server.cpp.s
+.PHONY : src/server.cpp.s
 
 # Help Target
 help:
@@ -329,16 +353,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... main"
-	@echo "... src/Request.o"
-	@echo "... src/Request.i"
-	@echo "... src/Request.s"
-	@echo "... src/Response.o"
-	@echo "... src/Response.i"
-	@echo "... src/Response.s"
-	@echo "... src/Server.o"
-	@echo "... src/Server.i"
-	@echo "... src/Server.s"
+	@echo "... JetPlusPlusLib"
+	@echo "... src/container/container.o"
+	@echo "... src/container/container.i"
+	@echo "... src/container/container.s"
 	@echo "... src/json/value.o"
 	@echo "... src/json/value.i"
 	@echo "... src/json/value.s"
@@ -348,12 +366,21 @@ help:
 	@echo "... src/methods/methods.o"
 	@echo "... src/methods/methods.i"
 	@echo "... src/methods/methods.s"
-	@echo "... src/router/Route.o"
-	@echo "... src/router/Route.i"
-	@echo "... src/router/Route.s"
-	@echo "... src/router/Router.o"
-	@echo "... src/router/Router.i"
-	@echo "... src/router/Router.s"
+	@echo "... src/request.o"
+	@echo "... src/request.i"
+	@echo "... src/request.s"
+	@echo "... src/response.o"
+	@echo "... src/response.i"
+	@echo "... src/response.s"
+	@echo "... src/router/route.o"
+	@echo "... src/router/route.i"
+	@echo "... src/router/route.s"
+	@echo "... src/router/router.o"
+	@echo "... src/router/router.i"
+	@echo "... src/router/router.s"
+	@echo "... src/server.o"
+	@echo "... src/server.i"
+	@echo "... src/server.s"
 .PHONY : help
 
 

@@ -1,4 +1,4 @@
-#include "methods.hpp"
+#include "../../include/methods/methods.hpp"
 #include <algorithm>
 #include <string>
 #include <iostream>

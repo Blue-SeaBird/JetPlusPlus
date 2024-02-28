@@ -1,7 +1,27 @@
+# CMakeLists.txt in the root of your library project
+
 cmake_minimum_required(VERSION 3.10)
-project(JetPlusPlus)
+project(JetPlusPlusLib)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 
-# Specify the main executable
-add_executable(main src/main.cpp src/router/Router.cpp src/Server.cpp src/Response.cpp src/Request.cpp src/router/Route.cpp src/methods/methods.cpp src/json/value.cpp)
+# Collect all source files in the src directory
+file(GLOB_RECURSE LIB_SOURCES "src/*.cpp")
+
+# Create the library
+add_library(JetPlusPlusLib SHARED ${LIB_SOURCES})
+
+# Add include directories
+target_include_directories(JetPlusPlusLib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# Optionally, you can set additional compiler options or dependencies here
+# target_compile_options(JetPlusPlusLib PRIVATE -Wall)
+
+# Optionally, you can link against other libraries
+# target_link_libraries(JetPlusPlusLib PRIVATE some_other_library)
+
+# Specify the output directory for the library build
+set_target_properties(JetPlusPlusLib PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
+
+# Optionally, you can install the library to a system location
+# install(TARGETS JetPlusPlusLib DESTINATION /usr/local/lib)

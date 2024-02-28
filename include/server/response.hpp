@@ -8,7 +8,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 
-#include "json/value.hpp"
+#include "../json/value.hpp"
 
 namespace JETPP
 {

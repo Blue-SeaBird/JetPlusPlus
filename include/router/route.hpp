@@ -3,8 +3,8 @@
 
 #include <string>
 #include <functional>
-#include "../request.hpp"
-#include "../response.hpp"
+#include "../server/request.hpp"
+#include "../server/response.hpp"
 #include "../methods/methods.hpp"
 
 namespace JETPP
