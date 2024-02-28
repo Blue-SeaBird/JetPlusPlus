@@ -48,13 +48,13 @@ Create a main function in your C++ application and define your API endpoints usi
 #include "jetplusplus/server/server.hpp"
 
 int main() {
-    Router router;
+    JETPP::Router router;
     router.get("/your-endpoint",[](JETPP::Request &req, JETPP::Response &res)
      { 
         //your logic here
      });
     
-    Server server(router);
+    JETPP::Server server(router);
     server.start(8080);
     return 0;
 }
