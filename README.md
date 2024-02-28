@@ -34,7 +34,7 @@ To use JetPlusPlus in your C++ project, follow these steps:
 
 1. Clone the JetPlusPlus repository.
 ```sh
-https://github.com/Blue-SeaBird/JetPlusPlus.git
+git clone https://github.com/Blue-SeaBird/JetPlusPlus.git
 ```
 2. Include the necessary headers in your project.
 3. Build and link your project with JetPlusPlus.
