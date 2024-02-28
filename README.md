@@ -13,8 +13,8 @@ Created and developed at Blue SeaBird by: @Peeentaa
 3. [Installation](#installation)
 4. [Getting Started](#getting-started)
 5. [Routes and Endpoints](#routes-and-endpoints)
-   - [GET](#get-route)
-   - [POST](#post-route)
+   - [GET](#get)
+   - [POST](#post)
 6. [Containers](#containers)
 
 ## Introduction
@@ -24,7 +24,7 @@ JetPlusPlus is a C++ REST API framework designed to simplify the development of 
 ## Features
 
 - **Modular Routing**: Easily define routes with callback functions, making it simple to handle various endpoints in your application.
-- **Container Support**: JetPlusPlus now supports containers to restrict access to specified hosts, enhancing security for your API.
+- **Container Support**: JetPlusPlus supports proxy containers to restrict access to specified hosts, enhancing security for your API.
 - **JSON Response Handling**: The framework provides built-in support for handling JSON responses, making it convenient to work with JSON data in your API.
 
 
@@ -44,8 +44,8 @@ git clone https://github.com/Blue-SeaBird/JetPlusPlus.git
 Create a main function in your C++ application and define your API endpoints using the JetPlusPlus router.
 
 ```cpp
-#include "router/router.hpp"
-#include "server/server.hpp"
+#include "jetplusplus/router/router.hpp"
+#include "jetplusplus/server/server.hpp"
 
 int main() {
     Router router;
@@ -60,6 +60,90 @@ int main() {
 }
 ```
 
+## Routes and Endpoints
+
+### GET
+
+Simple GET route:
+```cpp
+router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        res.send("Hello World"); 
+    });
+
+```
+
+With custom status:
+```cpp
+router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        res.status(200).send("Hello World"); 
+    });
+```
+
+
+With json response:
+```cpp
+router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        JETPP::JsonValue users;
+        JETPP::JsonValue user;
+        user.setObject({{"name", JETPP::JsonValue("John Doe")}});
+
+        std::vector<JETPP::JsonValue> usersVector;
+        users.setArray(userVector)
+        res.json(users);
+    });
+```
+
+With dynamic route:
+```cpp
+router.get("/users/:userid", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        std::string userid=req.params.userid;
+        res.status(200).send(userid);
+    });
+```
+
+With query params:
+
+```cpp
+router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        std::string userid=req.query.userid;
+        res.status(200).send(userid);
+    });
+```
+
+```http
+### Expect: 123 (STATUSCODE 200)
+GET http://localhost:8080/users?userid=123
+```
+
+### POST
+
+Simple POST route:
+```cpp
+router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        res.send(200);
+    });
+```
+
+### Patch
+
+### Delete
+
+### Options
+
+Simple OPTIONS route:
+```cpp
+router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        res.send(200);
+    });
+```
+
 ## Containers
 
 
@@ -69,7 +153,7 @@ To create a container, use the JETPP::Container class:
 
 ```cpp
 JETPP::Container myContainer;
-````
+```
 
 ### Adding Access Hosts
 
@@ -98,6 +182,10 @@ Now, the "/restricted-endpoint" route will only be accessible from hosts specifi
 ### Code example with container
 
 ```cpp
+#include "jetplusplus/router/router.hpp"
+#include "jetplusplus/server/server.hpp"
+#include "jetplusplus/container/container.hpp"
+
 int main()
 {
     JETPP::Router router;
@@ -106,7 +194,7 @@ int main()
 
     // Define a container and add an access host
     JETPP::Container userProxyContainer;
-    userProxyContainer.addAccessHost("127.0.0.1:3000");
+    userProxyContainer.addAccessHost("127.0.0.1");
 
     // Associate the container with a route
     router.get("/users/:user", [](JETPP::Request &req, JETPP::Response &res)

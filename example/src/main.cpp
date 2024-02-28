@@ -1,5 +1,5 @@
-#include "router/router.hpp"
-#include "server/server.hpp"
+#include "jetplusplus/router/router.hpp"
+#include "jetplusplus/server/server.hpp"
 
 int main(){
     JETPP::Router router;
