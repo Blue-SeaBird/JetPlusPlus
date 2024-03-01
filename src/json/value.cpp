@@ -1,4 +1,4 @@
-#include "../../include/jetplusplus/json/value.hpp"
+#include "jetplusplus/json/value.hpp"
 
 namespace JETPP
 {

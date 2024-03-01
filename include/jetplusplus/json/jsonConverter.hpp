@@ -10,9 +10,10 @@ namespace JETPP
     class JsonConverter{
         public:
             JsonConverter();
-            std::string jsonToString(JETPP::JsonValue value) const;
-            JETPP::JsonValue stringToJson(std::string value) const;
-            void splitString(std::string str, std::vector<std::string> &segments, char delimiter) const;
+            std::string jsonToString(JETPP::JsonValue value);
+            JETPP::JsonValue stringToJson(std::string value);
+            void splitString(std::string str, std::vector<std::string> &segments, char delimiter);
+        private:
     };
 } // namespace JETPP
 

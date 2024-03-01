@@ -8,6 +8,8 @@ set(CMAKE_CXX_STANDARD 17)
 # Collect all source files in the src directory
 file(GLOB_RECURSE LIB_SOURCES "src/*.cpp")
 
+# list(APPEND LIB_SOURCES "src/json/jsonConverter.cpp")
+
 # Create the library
 add_library(JetPlusPlusLib SHARED ${LIB_SOURCES})
 

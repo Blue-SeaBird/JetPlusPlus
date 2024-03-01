@@ -1,11 +1,11 @@
-#include "../../include/jetplusplus/json/jsonConverter.hpp"
+#include "jetplusplus/json/jsonConverter.hpp"
 
 namespace JETPP{    
 
         JsonConverter::JsonConverter(){
 
         }
-        std::string JsonConverter::jsonToString(JETPP::JsonValue value) const{
+        std::string JsonConverter::jsonToString(JETPP::JsonValue value){
 
             switch (value.type)
             {
@@ -54,34 +54,45 @@ namespace JETPP{
             }
         }
 
-        JETPP::JsonValue JsonConverter::stringToJson(std::string value) const{
+        JETPP::JsonValue JsonConverter::stringToJson(std::string value){
             JETPP::JsonValue valueJson;
+            char firstChar = value.empty() ? '\0' : value[0];
 
-            if(value.find("[",0)){//convert array
+            if(firstChar=='['){//convert array
                 std::vector<JETPP::JsonValue> values;
-                std::string slicedValue=value.substr(1, value.size()-2);
+                std::string slicedArray=value.substr(1, value.size()-2);
 
                 std::vector<std::string> valueSegments;
-                splitString(slicedValue, valueSegments, ',');
+                splitString(slicedArray, valueSegments, ',');
 
                 for(std::string v: valueSegments){
                     values.push_back(stringToJson(v));
                 }
                 valueJson.setArray(values);
 
-            }else if(value.find("{",0) || value.find(" {",0)){//convert object
+            }else if(firstChar=='{'){//convert object
+                std::string slicedObject=value.substr(1, value.size()-2);
+
                 std::map<std::string, JsonValue> objectValue;
                 
                 std::vector<std::string> fieldsSegments;
-                splitString(value, fieldsSegments, ',');
+                splitString(slicedObject, fieldsSegments, ',');
 
                 for(std::string v: fieldsSegments){
                     std::vector<std::string> fieldSegments;
-
+                    std::cout << "to splitt object: " << v << std::endl;
                     splitString(v, fieldSegments, ':');
 
-                    for(int i=0;i<fieldSegments.size();i+=2){
-                        objectValue.insert({fieldSegments[i],stringToJson(fieldSegments[i+1])});
+                    for(int i=0;i<fieldSegments.size()-1;i++){
+                        std::string fieldName = fieldSegments[i];
+                        std::string valueName = fieldSegments[i+1];
+
+                        fieldName.erase(std::remove(fieldName.begin(), fieldName.end(), '\"'), fieldName.end());
+                        valueName.erase(std::remove(valueName.begin(), valueName.end(), '\"'), valueName.end());
+
+                        std::cout << "Field: " << fieldName << ", Value: " << valueName << std::endl;
+
+                        objectValue.insert({fieldName,stringToJson(valueName)});
                     }
                 }
                 valueJson.setObject(objectValue);
@@ -90,20 +101,25 @@ namespace JETPP{
                 double number;
                 iss >> number;
 
-                if(value[0]=='t'){
+                if(value=="true"){
                     valueJson.setBoolean(true);
-                }else if(value[0]=='f'){
+                    std::cout << "bool" << std::endl;
+                }else if(value=="false"){
                     valueJson.setBoolean(false);
+                    std::cout << "bool" << std::endl;
                 }else if(!iss.fail() && iss.eof()){
                     valueJson.setNumber(number);
+                    std::cout << "number" << std::endl;
+
                 }else{
                     valueJson.setString(value);
+                    std::cout << "string" << std::endl;
                 }
             }
             return valueJson;
         }
 
-        void JsonConverter::splitString(std::string str, std::vector<std::string> &segments, char delimiter) const{
+        void JsonConverter::splitString(std::string str, std::vector<std::string> &segments, char delimiter){
             std::istringstream isstream(str);
             std::string segment;
             while (std::getline(isstream, segment, delimiter))
