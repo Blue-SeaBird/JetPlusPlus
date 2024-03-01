@@ -1,10 +1,18 @@
 #include "jetplusplus/router/router.hpp"
 #include "jetplusplus/server/server.hpp"
+#include "jetplusplus/json/value.hpp"
+#include "jetplusplus/json/jsonConverter.hpp"
+#include <string>
 
 int main(){
     JETPP::Router router;
     router.post("/test",[](JETPP::Request &req, JETPP::Response &res){
-        res.send(req.body);
+        JETPP::JsonConverter jsonConverter;
+        std::string body=req.body;
+
+        JETPP::JsonValue value=jsonConverter.stringToJson(body);
+
+        res.json(value);
     });
 
     JETPP::Server server(router);

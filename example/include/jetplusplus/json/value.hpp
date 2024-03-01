@@ -4,6 +4,8 @@
 #include <string>
 #include <map>
 #include <vector>
+#include <stdio.h>
+#include <iostream>
 
 namespace JETPP
 {
@@ -35,14 +37,13 @@ namespace JETPP
 
         // Method to convert JSON value to JSON string
         std::string toJsonString() const;
-
-    private:
         Type type;
         std::string asString;
         double asNumber;
         bool asBoolean;
         std::map<std::string, JsonValue> asObject;
         std::vector<JsonValue> asArray;
+    private:
     };
 } // namespace JETPP
 

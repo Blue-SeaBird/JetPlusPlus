@@ -134,6 +134,8 @@ namespace JETPP
         try
         {
             std::string message = object.toJsonString();
+            /*JETPP::JsonConverter jsonConverter;
+            std::string message=jsonConverter.jsonToString(object);*/
 
             // Build the response message with header
             std::string response = "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Length: " + std::to_string(message.length()) + "\r\nAccess-Control-Allow-Origin: *";

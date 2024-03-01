@@ -1,6 +1,4 @@
 #include "../../include/jetplusplus/json/value.hpp"
-#include <stdio.h>
-#include <iostream>
 
 namespace JETPP
 {

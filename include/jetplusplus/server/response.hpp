@@ -9,6 +9,7 @@
 #include <netinet/in.h>
 
 #include "../json/value.hpp"
+#include "../json/jsonConverter.hpp"
 
 namespace JETPP
 {
