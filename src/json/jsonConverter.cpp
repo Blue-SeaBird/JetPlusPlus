@@ -63,7 +63,30 @@ namespace JETPP{
                 std::string slicedArray=value.substr(1, value.size()-2);
 
                 std::vector<std::string> valueSegments;
-                splitString(slicedArray, valueSegments, ',');
+
+                bool append=false;
+                int countOpen=0, countClose=0;
+                for(int i=0,j=0;i<slicedArray.size();i++){
+                    if(slicedArray.at(i)=='{'){
+                        countOpen++;
+                        continue;
+                    }else if(slicedArray.at(i)=='}'){
+                        countClose++;
+                        if(countOpen==countClose){
+                            append=true;
+                        }
+                    }else if(slicedArray.at(i)==',' && append){
+                        valueSegments.push_back(slicedArray.substr(j,i-j));
+                        j=i+1;
+                        append=false;
+                        countOpen=0;
+                        countClose=0;
+                        continue;
+                    }
+                    if(append && i+1==slicedArray.size()){
+                        valueSegments.push_back(slicedArray.substr(j,i-j+1));
+                    }
+                }
 
                 for(std::string v: valueSegments){
                     values.push_back(stringToJson(v));
@@ -80,7 +103,6 @@ namespace JETPP{
 
                 for(std::string v: fieldsSegments){
                     std::vector<std::string> fieldSegments;
-                    std::cout << "to splitt object: " << v << std::endl;
                     splitString(v, fieldSegments, ':');
 
                     for(int i=0;i<fieldSegments.size()-1;i++){
@@ -89,8 +111,6 @@ namespace JETPP{
 
                         fieldName.erase(std::remove(fieldName.begin(), fieldName.end(), '\"'), fieldName.end());
                         valueName.erase(std::remove(valueName.begin(), valueName.end(), '\"'), valueName.end());
-
-                        std::cout << "Field: " << fieldName << ", Value: " << valueName << std::endl;
 
                         objectValue.insert({fieldName,stringToJson(valueName)});
                     }
@@ -103,17 +123,12 @@ namespace JETPP{
 
                 if(value=="true"){
                     valueJson.setBoolean(true);
-                    std::cout << "bool" << std::endl;
                 }else if(value=="false"){
                     valueJson.setBoolean(false);
-                    std::cout << "bool" << std::endl;
                 }else if(!iss.fail() && iss.eof()){
                     valueJson.setNumber(number);
-                    std::cout << "number" << std::endl;
-
                 }else{
                     valueJson.setString(value);
-                    std::cout << "string" << std::endl;
                 }
             }
             return valueJson;
