@@ -6,6 +6,7 @@ namespace JETPP
     {
         Get,
         Post,
+        Put,
         Patch,
         Delete,
         Options

@@ -4,8 +4,6 @@ C++ REST API Framework
 
 Created and developed at Blue SeaBird by: @Peeentaa
 
-# Documentation for JetPlusPlus
-
 ## Table of Contents
 
 1. [Introduction](#introduction)
@@ -130,11 +128,46 @@ router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
     });
 ```
 
-### Patch
+Retrieve the body:
+```cpp
+router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        JETPP::JsonValue body=req.body;
+        res.send(200);
+    });
+```
 
-### Delete
+### PUT
 
-### Options
+Simple PUT route:
+```cpp
+router.put("/players", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        res.send(200);
+    });
+```
+
+### PATCH
+
+Simple PATCH route:
+```cpp
+router.patch("/players", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        res.send(200);
+    });
+```
+
+### DELETE
+
+Simple DELETE route:
+```cpp
+router.Delete("/players", [](JETPP::Request &req, JETPP::Response &res)
+    {
+        res.send(200);
+    });
+```
+
+### OPTIONS
 
 Simple OPTIONS route:
 ```cpp

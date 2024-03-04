@@ -19,11 +19,17 @@ namespace JETPP
         //with default container
         void get(const std::string &routeurl, void (*callback)(Request &, Response &));
         void post(const std::string &routeurl, void (*callback)(Request &, Response &));
+        void put(const std::string &routeurl, void (*callback)(Request &, Response &));
+        void patch(const std::string &routeurl, void (*callback)(Request &, Response &));
+        void Delete(const std::string &routeurl, void (*callback)(Request &, Response &));
         void options(const std::string &routeurl, void (*callback)(Request &, Response &));
 
         //with container
         void get(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
         void post(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
+        void put(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
+        void patch(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
+        void Delete(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
         void options(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
         std::vector<Route> getRoutes();
         std::optional<Route> findRoute(std::string request, JETPP::Methods method, std::string clientAddress);

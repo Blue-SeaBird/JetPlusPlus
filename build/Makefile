@@ -153,6 +153,30 @@ src/container/container.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/container/container.cpp.s
 .PHONY : src/container/container.cpp.s
 
+src/json/jsonConverter.o: src/json/jsonConverter.cpp.o
+.PHONY : src/json/jsonConverter.o
+
+# target to build an object file
+src/json/jsonConverter.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/json/jsonConverter.cpp.o
+.PHONY : src/json/jsonConverter.cpp.o
+
+src/json/jsonConverter.i: src/json/jsonConverter.cpp.i
+.PHONY : src/json/jsonConverter.i
+
+# target to preprocess a source file
+src/json/jsonConverter.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/json/jsonConverter.cpp.i
+.PHONY : src/json/jsonConverter.cpp.i
+
+src/json/jsonConverter.s: src/json/jsonConverter.cpp.s
+.PHONY : src/json/jsonConverter.s
+
+# target to generate assembly for a file
+src/json/jsonConverter.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/json/jsonConverter.cpp.s
+.PHONY : src/json/jsonConverter.cpp.s
+
 src/json/value.o: src/json/value.cpp.o
 .PHONY : src/json/value.o
 
@@ -357,6 +381,9 @@ help:
 	@echo "... src/container/container.o"
 	@echo "... src/container/container.i"
 	@echo "... src/container/container.s"
+	@echo "... src/json/jsonConverter.o"
+	@echo "... src/json/jsonConverter.i"
+	@echo "... src/json/jsonConverter.s"
 	@echo "... src/json/value.o"
 	@echo "... src/json/value.i"
 	@echo "... src/json/value.s"

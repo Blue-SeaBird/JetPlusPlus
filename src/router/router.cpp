@@ -19,6 +19,21 @@ namespace JETPP
         post(routeurl, callback ,this->container.front());
     }
 
+    void Router::put(const std::string &routeurl, void (*callback)(Request &, Response &))
+    {
+        put(routeurl, callback ,this->container.front());
+    }
+
+    void Router::patch(const std::string &routeurl, void (*callback)(Request &, Response &))
+    {
+        patch(routeurl, callback ,this->container.front());
+    }
+
+    void Router::Delete(const std::string &routeurl, void (*callback)(Request &, Response &))
+    {
+        Delete(routeurl, callback ,this->container.front());
+    }
+
     void Router::options(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
         options(routeurl, callback ,this->container.front());
@@ -36,6 +51,30 @@ namespace JETPP
     void Router::post(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
     {
         Route route(routeurl, JETPP::Methods::Post, callback);
+        Container &checkedContainer = checkContainer(container);
+
+        checkedContainer.addRoute(route);
+    }
+
+    void Router::put(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
+    {
+        Route route(routeurl, JETPP::Methods::Put, callback);
+        Container &checkedContainer = checkContainer(container);
+
+        checkedContainer.addRoute(route);
+    }
+
+     void Router::patch(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
+    {
+        Route route(routeurl, JETPP::Methods::Patch, callback);
+        Container &checkedContainer = checkContainer(container);
+
+        checkedContainer.addRoute(route);
+    }
+
+     void Router::Delete(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
+    {
+        Route route(routeurl, JETPP::Methods::Delete, callback);
         Container &checkedContainer = checkContainer(container);
 
         checkedContainer.addRoute(route);

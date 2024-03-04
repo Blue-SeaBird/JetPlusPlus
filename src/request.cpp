@@ -12,6 +12,7 @@ namespace JETPP
         this->requesturl = requesturl;
         this->routeurl = routeurl;
         this->request = request;
+        
         // split the urls
         splitString(this->routeurl, this->routeSplitted, '/');
         splitString(requesturl, this->requestSplitted, '/');
@@ -19,6 +20,7 @@ namespace JETPP
         this->setQuery();
         this->setParams();
         this->setBody();
+        this->setHeaders();
     }
 
     void Request::setParams()
@@ -84,6 +86,27 @@ namespace JETPP
 
     void Request::setHeaders()
     {
+        size_t headerEnd = request.find("\r\n\r\n");
+        if (headerEnd != std::string::npos)
+        {
+            std::istringstream headerStream(request.substr(0, headerEnd));
+            std::string headerLine;
+
+            while (std::getline(headerStream, headerLine, '\n'))
+            {
+                // Handling both Windows and Unix line endings
+                headerLine.erase(std::remove(headerLine.begin(), headerLine.end(), '\r'), headerLine.end());
+
+                size_t colonPos = headerLine.find(':');
+                if (colonPos != std::string::npos)
+                {
+                    std::string headerKey = headerLine.substr(0, colonPos);
+                    std::string headerValue = headerLine.substr(colonPos + 1);
+
+                    this->headers[headerKey] = headerValue;
+                }
+            }
+        }
     }
 
     void Request::splitString(std::string str, std::vector<std::string> &segments, char delimiter)

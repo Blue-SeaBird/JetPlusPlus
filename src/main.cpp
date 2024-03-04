@@ -50,7 +50,7 @@ int main()
         JETPP::JsonValue json3;
         json3.setObject({{"message3", JETPP::JsonValue("Hello World! from messages")}});
         json2.setObject({ {"message2",json3 }});
-        jsonResponse.setObject({{"message", json2} });
+        jsonResponse.setObject({{"message", json2}});
         res.json(jsonResponse); });
 
     // Start the server
