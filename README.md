@@ -45,6 +45,8 @@ git clone https://github.com/Blue-SeaBird/JetPlusPlus.git
 
 ## Getting Started
 
+[![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white)](https://en.wikipedia.org/wiki/C%2B%2B) [![CMake](https://img.shields.io/badge/CMake-064F8C.svg?style=for-the-badge&logo=CMake&logoColor=white)](https://cmake.org/)
+
 Create a main function in your C++ application and define your API endpoints using the JetPlusPlus router.
 
 ```cpp
