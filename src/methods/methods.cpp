@@ -12,6 +12,8 @@ namespace JETPP
             return JETPP::Methods::Get;
         else if (method == "POST")
             return JETPP::Methods::Post;
+        else if(method == "PUT")
+            return JETPP::Methods::Put;
         else if (method == "PATCH")
             return JETPP::Methods::Patch;
         else if (method == "DELETE")
