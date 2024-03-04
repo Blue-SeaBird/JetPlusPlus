@@ -35,8 +35,6 @@ namespace JETPP
             return;
         }
 
-        std::cout << "Server is listening on port " << port << std::endl;
-
         std::cout << "\033[0;34m";
         std::cout << "     ____.       __    __________.__                 __________.__                " << std::endl;
         std::cout << "    |    | _____/  |_  \\______   \\  |  __ __  ______ \\______   \\  |  __ __  ______" << std::endl;
@@ -179,8 +177,7 @@ namespace JETPP
             close(clientSocket);
             return nullptr;
         }
-        std::string fullAddress=std::string(clientIP)+ ":" +std::to_string(clientAddress.sin_port);
-
+        std::string fullAddress=std::string(clientIP)+ ":" +std::to_string(ntohs(clientAddress.sin_port));
         return fullAddress;
     }
 }
