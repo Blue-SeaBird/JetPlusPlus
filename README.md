@@ -40,8 +40,32 @@ To use JetPlusPlus in your C++ project, follow these steps:
 ```sh
 git clone https://github.com/Blue-SeaBird/JetPlusPlus.git
 ```
-2. Include the necessary headers in your project.
-3. Build and link your project with JetPlusPlus.
+2. Build the project with cmake
+```sh
+mkdir build
+cd build
+cmake ..
+make
+```
+
+3. Include the necessary headers in your project.
+
+```
+# CMakeLists.txt
+
+# Add the path to JetPlusPlus headers
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include/jetplusplus)
+
+# Add any other necessary configuration for your project
+```
+
+4. Build and link your project with JetPlusPlus.
+```
+# CMakeLists.txt
+
+# Link your project with JetPlusPlus library
+target_link_libraries(your_project_name PRIVATE lib/libJetPlusPlusLib.dylib)
+```
 
 ## Getting Started
 
