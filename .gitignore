@@ -12,4 +12,4 @@ examples/*/build/
 
 # Compiled libraries
 lib/
-./.DS_STORE
+.DS_STORE
