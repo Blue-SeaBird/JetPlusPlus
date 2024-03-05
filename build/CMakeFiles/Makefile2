@@ -81,12 +81,12 @@ clean: CMakeFiles/JetPlusPlusLib.dir/clean
 CMakeFiles/JetPlusPlusLib.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11 "Built target JetPlusPlusLib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10 "Built target JetPlusPlusLib"
 .PHONY : CMakeFiles/JetPlusPlusLib.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/JetPlusPlusLib.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles 11
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/JetPlusPlusLib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/CMakeFiles 0
 .PHONY : CMakeFiles/JetPlusPlusLib.dir/rule

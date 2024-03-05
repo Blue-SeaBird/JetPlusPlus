@@ -201,30 +201,6 @@ src/json/value.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/json/value.cpp.s
 .PHONY : src/json/value.cpp.s
 
-src/main.o: src/main.cpp.o
-.PHONY : src/main.o
-
-# target to build an object file
-src/main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/main.cpp.o
-.PHONY : src/main.cpp.o
-
-src/main.i: src/main.cpp.i
-.PHONY : src/main.i
-
-# target to preprocess a source file
-src/main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/main.cpp.i
-.PHONY : src/main.cpp.i
-
-src/main.s: src/main.cpp.s
-.PHONY : src/main.s
-
-# target to generate assembly for a file
-src/main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/JetPlusPlusLib.dir/build.make CMakeFiles/JetPlusPlusLib.dir/src/main.cpp.s
-.PHONY : src/main.cpp.s
-
 src/methods/methods.o: src/methods/methods.cpp.o
 .PHONY : src/methods/methods.o
 
@@ -387,9 +363,6 @@ help:
 	@echo "... src/json/value.o"
 	@echo "... src/json/value.i"
 	@echo "... src/json/value.s"
-	@echo "... src/main.o"
-	@echo "... src/main.i"
-	@echo "... src/main.s"
 	@echo "... src/methods/methods.o"
 	@echo "... src/methods/methods.i"
 	@echo "... src/methods/methods.s"

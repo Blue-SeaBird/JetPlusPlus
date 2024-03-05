@@ -11,96 +11,82 @@ namespace JETPP
 
     void Router::get(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
-        get(routeurl, callback ,this->container.front());
+        this->addRoute(routeurl, JETPP::Methods::Get, callback, this->container.front());
     }
 
     void Router::post(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
-        post(routeurl, callback ,this->container.front());
+        this->addRoute(routeurl, JETPP::Methods::Post, callback, this->container.front());
     }
 
     void Router::put(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
-        put(routeurl, callback ,this->container.front());
+        this->addRoute(routeurl, JETPP::Methods::Put, callback, this->container.front());
     }
 
     void Router::patch(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
-        patch(routeurl, callback ,this->container.front());
+        this->addRoute(routeurl, JETPP::Methods::Patch, callback, this->container.front());
     }
 
     void Router::Delete(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
-        Delete(routeurl, callback ,this->container.front());
+        this->addRoute(routeurl, JETPP::Methods::Delete, callback, this->container.front());
     }
 
     void Router::options(const std::string &routeurl, void (*callback)(Request &, Response &))
     {
-        options(routeurl, callback ,this->container.front());
+        this->addRoute(routeurl, JETPP::Methods::Options, callback, this->container.front());
     }
-
 
     void Router::get(const std::string &routeurl, void (*callback)(Request &, Response &),Container &container)
     {
-        Route route(routeurl, JETPP::Methods::Get, callback);
-        Container &checkedContainer = checkContainer(container);
-
-        checkedContainer.addRoute(route);
+        this->addRoute(routeurl, JETPP::Methods::Get, callback, container);
     }
 
     void Router::post(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
     {
-        Route route(routeurl, JETPP::Methods::Post, callback);
-        Container &checkedContainer = checkContainer(container);
-
-        checkedContainer.addRoute(route);
+        this->addRoute(routeurl, JETPP::Methods::Post, callback, container);
     }
 
     void Router::put(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
     {
-        Route route(routeurl, JETPP::Methods::Put, callback);
-        Container &checkedContainer = checkContainer(container);
-
-        checkedContainer.addRoute(route);
+        this->addRoute(routeurl, JETPP::Methods::Put, callback, container);
     }
 
      void Router::patch(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
     {
-        Route route(routeurl, JETPP::Methods::Patch, callback);
-        Container &checkedContainer = checkContainer(container);
-
-        checkedContainer.addRoute(route);
+        this->addRoute(routeurl, JETPP::Methods::Patch, callback, container);
     }
 
      void Router::Delete(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
     {
-        Route route(routeurl, JETPP::Methods::Delete, callback);
-        Container &checkedContainer = checkContainer(container);
-
-        checkedContainer.addRoute(route);
+        this->addRoute(routeurl, JETPP::Methods::Delete, callback, container);
     }
 
     void Router::options(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container)
     {
-        Route route(routeurl, JETPP::Methods::Options, callback);
-        Container &checkedContainer = checkContainer(container);
-
-        checkedContainer.addRoute(route);
+        this->addRoute(routeurl, JETPP::Methods::Options, callback, container);
     }
 
-    Container &Router::checkContainer(Container &container)
+    void Router::checkContainer(Container *container)
     {
-        for (int i = 0; i < this->container.size(); i++)
+        for (auto &existingContainner: this->container)
         {
-            if (container.getContainerId() == this->container[i].getContainerId())
+            if (container->getContainerId() == existingContainner.getContainerId())
             {
-                return this->container[i];
+                return;
             }
         }
-        this->container.push_back(container);
-        return this->container.back();
+        this->container.push_back(*container);
     }
+    
+    void Router::addRoute(const std::string &routeurl, JETPP::Methods method, void (*callback)(Request &, Response &), Container &container){
+        Route route(routeurl, method, callback);
 
+        this->checkContainer(&container);
+        (&container)->addRoute(route);
+    }
 
     std::optional<Route> Router::findRoute(std::string request, JETPP::Methods method, std::string clientAddress)
     {
