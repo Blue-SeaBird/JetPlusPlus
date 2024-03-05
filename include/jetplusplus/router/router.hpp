@@ -31,15 +31,16 @@ namespace JETPP
         void patch(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
         void Delete(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
         void options(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
-        std::vector<Route> getRoutes();
-        std::optional<Route> findRoute(std::string request, JETPP::Methods method, std::string clientAddress);
-        Container &checkContainer(Container &container);
 
+        std::optional<Route> findRoute(std::string request, JETPP::Methods method, std::string clientAddress);
     private:
         std::vector<Route> routes;
         std::vector<Container> container;
         void splitRoute(std::string str, std::vector<std::string> &segments, char delimiter);
         bool checkAccess(Container container, std::string clientAddress);
+        void addRoute(const std::string &routeurl, JETPP::Methods method, void (*callback)(Request &, Response &), Container &container);
+        void checkContainer(Container *container);
+
     };
 }
 

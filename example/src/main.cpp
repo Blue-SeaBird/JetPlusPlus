@@ -6,6 +6,12 @@
 
 int main(){
     JETPP::Router router;
+
+    router.get("/test",[](JETPP::Request &req, JETPP::Response &res){
+        
+        res.status(200).send("Hi");
+    });
+
     router.post("/test",[](JETPP::Request &req, JETPP::Response &res){
         JETPP::JsonConverter jsonConverter;
         std::string body=req.body;

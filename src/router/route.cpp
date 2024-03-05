@@ -29,6 +29,7 @@ namespace JETPP
         }
         catch (const std::runtime_error &)
         {
+            std::cout << "Couldn't execute callback function of route: " << this->getName() << std::endl;
         }
     }
 }
