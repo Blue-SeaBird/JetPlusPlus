@@ -7,8 +7,9 @@ Makefile
 
 # Compiled binaries
 bin/
-./build/
+./build/*
 examples/*/build/
 
 # Compiled libraries
 lib/
+./.DS_STORE
