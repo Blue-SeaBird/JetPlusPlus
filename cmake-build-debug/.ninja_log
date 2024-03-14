@@ -1,0 +1,14 @@
+# ninja log v5
+1	432	1710420511287278769	CMakeFiles/JetPlusPlusLib.dir/src/methods/methods.cpp.o	e78cf5f5f0001bbf
+1	531	1710420511386249830	CMakeFiles/JetPlusPlusLib.dir/src/json/value.cpp.o	23dbb001228750b2
+1	679	1710420511533617256	CMakeFiles/JetPlusPlusLib.dir/src/container/container.cpp.o	3387ce46bb9e5f14
+1	546	1710420511400766114	CMakeFiles/JetPlusPlusLib.dir/src/request.cpp.o	6cec3df56103396c
+2	636	1710420511489179011	CMakeFiles/JetPlusPlusLib.dir/src/response.cpp.o	8a9a459860dc6a06
+8	333	1710423091450880256	CMakeFiles/JetPlusPlusLib.dir/src/server.cpp.o	d62f402c36abc119
+434	755	1710420511609905540	CMakeFiles/JetPlusPlusLib.dir/src/router/route.cpp.o	b2b920b29826e432
+341	375	1710423091494719716	/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/libJetPlusPlusLib.dylib	4169ea8df4fd1e
+8	341	1710423091458277876	CMakeFiles/JetPlusPlusLib.dir/src/router/router.cpp.o	34b211e4aa0629e4
+1	931	1710420511785109386	CMakeFiles/JetPlusPlusLib.dir/src/json/jsonConverter.cpp.o	4f756141c9731918
+5	337	1710424392133407254	CMakeFiles/JetPlusPlusLib.dir/src/json/jsonConverter.cpp.o	4f756141c9731918
+337	376	1710424392174417815	/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/libJetPlusPlusLib.dylib	4169ea8df4fd1e
+6	36	1710424403136368970	/Users/janhaslik/Code/BlueSeaBird/JetPlusPlus/build/libJetPlusPlusLib.dylib	4169ea8df4fd1e

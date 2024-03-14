@@ -12,7 +12,6 @@ namespace JETPP
             JsonConverter();
             std::string jsonToString(JETPP::JsonValue value);
             JETPP::JsonValue stringToJson(std::string value);
-            void splitString(std::string str, std::vector<std::string> &segments, char delimiter);
         private:
     };
 } // namespace JETPP

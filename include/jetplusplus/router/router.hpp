@@ -8,6 +8,7 @@
 #include "../server/request.hpp"
 #include "../server/response.hpp"
 #include "../container/container.hpp"
+#include <memory>
 
 namespace JETPP
 {
@@ -25,21 +26,21 @@ namespace JETPP
         void options(const std::string &routeurl, void (*callback)(Request &, Response &));
 
         //with container
-        void get(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
-        void post(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
-        void put(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
-        void patch(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
-        void Delete(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
-        void options(const std::string &routeurl, void (*callback)(Request &, Response &), Container &container);
+        void get(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
+        void post(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
+        void put(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
+        void patch(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
+        void Delete(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
+        void options(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
 
         std::optional<Route> findRoute(std::string request, JETPP::Methods method, std::string clientAddress);
     private:
         std::vector<Route> routes;
-        std::vector<Container> container;
+        std::vector<std::shared_ptr<Container>> containers;
         void splitRoute(std::string str, std::vector<std::string> &segments, char delimiter);
-        bool checkAccess(Container container, std::string clientAddress);
-        void addRoute(const std::string &routeurl, JETPP::Methods method, void (*callback)(Request &, Response &), Container &container);
-        void checkContainer(Container *container);
+        static bool checkAccess(std::shared_ptr<Container>& container, std::string clientAddress);
+        void addRoute(const std::string &routeurl, JETPP::Methods method, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
+        void checkContainer(std::shared_ptr<Container>& container);
 
     };
 }

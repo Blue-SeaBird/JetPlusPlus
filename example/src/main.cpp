@@ -18,7 +18,7 @@ int main(){
 
         JETPP::JsonValue value=jsonConverter.stringToJson(body);
 
-        res.json(value);
+        res.send(std::to_string(value.asArray.size()));
     });
 
     JETPP::Server server(router);
