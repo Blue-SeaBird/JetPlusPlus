@@ -11,7 +11,7 @@
 #include <unistd.h>
 #include <thread>
 
-namespace JETPP
+namespace jetpp
 {
     class Server
     {

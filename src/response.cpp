@@ -7,7 +7,7 @@
 #include <sstream>
 #include <unistd.h>
 
-namespace JETPP
+namespace jetpp
 {
     std::unordered_map<std::string, std::string> mimeTypesToFileExtensions = {
         {".jar", "application/java-archive"},
@@ -129,12 +129,12 @@ namespace JETPP
     }
 
     // Send a JSON object as the response
-    void Response::json(JETPP::JsonValue object)
+    void Response::json(jetpp::JsonValue object)
     {
         try
         {
             std::string message = object.toJsonString();
-            /*JETPP::JsonConverter jsonConverter;
+            /*jetpp::JsonConverter jsonConverter;
             std::string message=jsonConverter.jsonToString(object);*/
 
             // Build the response message with header
@@ -159,7 +159,7 @@ namespace JETPP
     }
 
     // Set the status code for the response
-    JETPP::Response Response::status(int status)
+    jetpp::Response Response::status(int status)
     {
         this->statuscode = status;
         return *this;

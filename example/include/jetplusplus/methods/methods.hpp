@@ -1,6 +1,6 @@
 #include <string>
 
-namespace JETPP
+namespace jetpp
 {
     enum Methods
     {

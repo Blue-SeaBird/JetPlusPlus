@@ -7,20 +7,20 @@
 #include "../server/response.hpp"
 #include "../methods/methods.hpp"
 
-namespace JETPP
+namespace jetpp
 {
     class Route
     {
     public:
-        Route(std::string name, JETPP::Methods method, void (*callback)(Request &, Response &));
+        Route(std::string name, jetpp::Methods method, void (*callback)(Request &, Response &));
 
         std::string getName();
-        JETPP::Methods getMethod();
+        jetpp::Methods getMethod();
         void execute(Request &request, Response &response);
 
     private:
         std::string name;
-        JETPP::Methods method;
+        jetpp::Methods method;
         void (*callback)(Request &, Response &);
     };
 }

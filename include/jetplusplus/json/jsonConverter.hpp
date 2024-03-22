@@ -5,15 +5,15 @@
 #include "value.hpp"
 #include <sstream>
 
-namespace JETPP
+namespace jetpp
 {
     class JsonConverter{
         public:
             JsonConverter();
-            std::string jsonToString(JETPP::JsonValue value);
-            JETPP::JsonValue stringToJson(std::string value);
+            std::string jsonToString(jetpp::JsonValue value);
+            jetpp::JsonValue stringToJson(std::string value);
         private:
     };
-} // namespace JETPP
+} // namespace jetpp
 
 #endif

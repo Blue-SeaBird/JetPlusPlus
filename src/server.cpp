@@ -1,6 +1,6 @@
 #include "../include/jetplusplus/server/server.hpp"
 
-namespace JETPP
+namespace jetpp
 {
     Server::Server(Router router)
     {
@@ -128,7 +128,8 @@ namespace JETPP
 
                     try
                     {
-                        std::string clientAddress=getFullClientAddress(clientSocket);
+                        std::string clientAddress=getFullClientAddress(request);
+                        std::cout << "ClientAddress: " << clientAddress << std::endl;
                         std::optional<Route> optRoute = this->router.findRoute(url, stringToMethod(method), clientAddress);
                         if(!optRoute.has_value()){
                             const char *response = "HTTP/1.1 401 Unauthorized\r\nContent-Length: 0\r\n\r\n";
@@ -157,27 +158,35 @@ namespace JETPP
         send(clientSocket, response, strlen(response), 0);
     }
 
-    std::string Server::getFullClientAddress(int clientSocket)
+    std::string Server::getFullClientAddress(const std::string& request)
     {
-        sockaddr_in clientAddress;
-        socklen_t clientAddrLen = sizeof(clientAddress);
-
-        // retrieve client's address information
-        if (getpeername(clientSocket, (struct sockaddr*)&clientAddress, &clientAddrLen) == -1)
-        {
-            std::cerr << "Failed to get client address" << std::endl;
-            close(clientSocket);
+        // Find the "Host:" header in the request
+        std::size_t hostPos = request.find("Host:");
+        if (hostPos == std::string::npos) {
+            std::cerr << "Host name not found in request header" << std::endl;
             return nullptr;
         }
 
-        char clientIP[INET_ADDRSTRLEN];
-        if (inet_ntop(AF_INET, &(clientAddress.sin_addr), clientIP, INET_ADDRSTRLEN) == NULL)
-        {
-            std::cerr << "Failed to convert client address to string" << std::endl;
-            close(clientSocket);
+        // Find the end of the line containing the host information
+        std::size_t endOfLine = request.find("\r\n", hostPos);
+        if (endOfLine == std::string::npos) {
+            std::cerr << "Invalid request format" << std::endl;
             return nullptr;
         }
-        std::string fullAddress=std::string(clientIP)+ ":" +std::to_string(ntohs(clientAddress.sin_port));
-        return fullAddress;
+
+        // Extract the host information from the request
+        std::string hostInfo = request.substr(hostPos, endOfLine - hostPos);
+
+        // Extract the host name from the host information
+        std::size_t colonPos = hostInfo.find(":");
+        if (colonPos == std::string::npos) {
+            // If no port is specified, the host information is just the host name
+            return hostInfo.substr(6); // 6 is the length of "Host: "
+        } else {
+            // If port is specified, extract the host name before the colon
+            return hostInfo.substr(6, colonPos - 6); // 6 is the length of "Host: "
+        }
     }
+
+
 }

@@ -11,7 +11,7 @@
 #include "../json/value.hpp"
 #include "../json/jsonConverter.hpp"
 
-namespace JETPP
+namespace jetpp
 {
     class Response
     {
@@ -24,8 +24,8 @@ namespace JETPP
         Response(int clientSocket);
         void send(std::string message);
         void sendFile(std::string path);
-        JETPP::Response status(int status);
-        void json(JETPP::JsonValue object);
+        jetpp::Response status(int status);
+        void json(jetpp::JsonValue object);
         void addHeader(const std::string &key, const std::string &value);
     };
 }

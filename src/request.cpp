@@ -4,7 +4,7 @@
 #include <vector>
 #include <iostream>
 
-namespace JETPP
+namespace jetpp
 {
 
     Request::Request(std::string requesturl, std::string routeurl, std::string request)

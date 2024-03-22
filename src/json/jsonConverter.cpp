@@ -2,17 +2,17 @@
 //#include <regex>
 #include <algorithm>
 
-namespace JETPP{    
+namespace jetpp{    
 
     JsonConverter::JsonConverter(){
 
     }
 
-    std::string JsonConverter::jsonToString(JETPP::JsonValue value){
+    std::string JsonConverter::jsonToString(jetpp::JsonValue value){
 
         switch (value.type)
         {
-            case JETPP::JsonValue::OBJECT:
+            case jetpp::JsonValue::OBJECT:
             {
                 std::string jsonString = "{";
                 bool first = true;
@@ -28,7 +28,7 @@ namespace JETPP{
                 jsonString += "}";
                 return jsonString;
             }
-            case JETPP::JsonValue::ARRAY:
+            case jetpp::JsonValue::ARRAY:
             {
                 std::string jsonString = "[";
                 for (size_t i = 0; i < value.asArray.size(); ++i)
@@ -42,22 +42,22 @@ namespace JETPP{
                 jsonString += "]";
                 return jsonString;
             }
-            case JETPP::JsonValue::STRING:
+            case jetpp::JsonValue::STRING:
             {
                 return "\"" + value.asString + "\"";
             }
-            case JETPP::JsonValue::NUMBER:
+            case jetpp::JsonValue::NUMBER:
                 return std::to_string(value.asNumber);
-            case JETPP::JsonValue::BOOLEAN:
+            case jetpp::JsonValue::BOOLEAN:
                 return value.asBoolean ? "true" : "false";
-            case JETPP::JsonValue::NULL_VALUE:
+            case jetpp::JsonValue::NULL_VALUE:
                 return "null";
             default:
                 return ""; // Handle unrecognized type
         }
     }
 
-    JETPP::JsonValue JsonConverter::stringToJson(std::string value) {
+    jetpp::JsonValue JsonConverter::stringToJson(std::string value) {
         JsonValue valueJson;
 
         /*std::regex whiteSpaceRegex("\\s+");

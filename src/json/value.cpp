@@ -1,6 +1,6 @@
 #include "jetplusplus/json/value.hpp"
 
-namespace JETPP
+namespace jetpp
 {
 
     // Constructors
@@ -102,4 +102,4 @@ namespace JETPP
         }
     }
 
-} // namespace JETPP
+} // namespace jetpp

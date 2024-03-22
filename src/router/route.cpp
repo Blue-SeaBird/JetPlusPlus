@@ -2,9 +2,9 @@
 #include <string>
 #include <stdio.h>
 
-namespace JETPP
+namespace jetpp
 {
-    Route::Route(std::string name, JETPP::Methods method, void (*callback)(Request &, Response &))
+    Route::Route(std::string name, jetpp::Methods method, void (*callback)(Request &, Response &))
     {
         this->name = name;
         this->method = method;
@@ -16,7 +16,7 @@ namespace JETPP
         return this->name;
     }
 
-    JETPP::Methods Route::getMethod()
+    jetpp::Methods Route::getMethod()
     {
         return this->method;
     }

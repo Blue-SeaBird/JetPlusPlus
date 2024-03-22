@@ -3,23 +3,23 @@
 #include <string>
 #include <iostream>
 
-namespace JETPP
+namespace jetpp
 {
     Methods stringToMethod(std::string method)
     {
         std::transform(method.begin(), method.end(), method.begin(), ::toupper);
         if (method == "GET")
-            return JETPP::Methods::Get;
+            return jetpp::Methods::Get;
         else if (method == "POST")
-            return JETPP::Methods::Post;
+            return jetpp::Methods::Post;
         else if(method == "PUT")
-            return JETPP::Methods::Put;
+            return jetpp::Methods::Put;
         else if (method == "PATCH")
-            return JETPP::Methods::Patch;
+            return jetpp::Methods::Patch;
         else if (method == "DELETE")
-            return JETPP::Methods::Delete;
+            return jetpp::Methods::Delete;
         else if (method == "OPTIONS")
-            return JETPP::Methods::Options;
+            return jetpp::Methods::Options;
         else
         {
             std::cerr << "Unsupported method: " << method << std::endl;

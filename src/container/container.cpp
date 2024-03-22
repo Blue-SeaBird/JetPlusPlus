@@ -1,6 +1,6 @@
 #include "../../include/jetplusplus/container/container.hpp"
 
-namespace JETPP{
+namespace jetpp{
     Container::Container(){
         std::random_device rd;
         std::mt19937 gen(rd());

@@ -6,7 +6,7 @@
 #include <random>
 #include <sstream>
 
-namespace JETPP{
+namespace jetpp{
 
     class Container{
 

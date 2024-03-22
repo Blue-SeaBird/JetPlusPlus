@@ -5,23 +5,23 @@
 #include <string>
 
 int main(){
-    JETPP::Router router;
+    jetpp::Router router;
 
-    router.get("/test",[](JETPP::Request &req, JETPP::Response &res){
+    router.get("/test",[](jetpp::Request &req, jetpp::Response &res){
         
         res.status(200).send("Hi");
     });
 
-    router.post("/test",[](JETPP::Request &req, JETPP::Response &res){
-        JETPP::JsonConverter jsonConverter;
+    router.post("/test",[](jetpp::Request &req, jetpp::Response &res){
+        jetpp::JsonConverter jsonConverter;
         std::string body=req.body;
 
-        JETPP::JsonValue value=jsonConverter.stringToJson(body);
+        jetpp::JsonValue value=jsonConverter.stringToJson(body);
 
         res.send(std::to_string(value.asArray.size()));
     });
 
-    JETPP::Server server(router);
+    jetpp::Server server(router);
     server.start(8003);
     return 0;
 }

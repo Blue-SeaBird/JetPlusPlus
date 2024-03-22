@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <iostream>
 
-namespace JETPP
+namespace jetpp
 {
     class JsonValue
     {
@@ -45,6 +45,6 @@ namespace JETPP
         std::vector<JsonValue> asArray;
     private:
     };
-} // namespace JETPP
+} // namespace jetpp
 
 #endif

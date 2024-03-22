@@ -10,7 +10,7 @@
 #include "../container/container.hpp"
 #include <memory>
 
-namespace JETPP
+namespace jetpp
 {
     class Router
     {
@@ -33,13 +33,13 @@ namespace JETPP
         void Delete(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
         void options(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
 
-        std::optional<Route> findRoute(std::string request, JETPP::Methods method, std::string clientAddress);
+        std::optional<Route> findRoute(std::string request, jetpp::Methods method, std::string clientAddress);
     private:
         std::vector<Route> routes;
         std::vector<std::shared_ptr<Container>> containers;
         void splitRoute(std::string str, std::vector<std::string> &segments, char delimiter);
         static bool checkAccess(std::shared_ptr<Container>& container, std::string clientAddress);
-        void addRoute(const std::string &routeurl, JETPP::Methods method, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
+        void addRoute(const std::string &routeurl, jetpp::Methods method, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container);
         void checkContainer(std::shared_ptr<Container>& container);
 
     };

@@ -78,13 +78,13 @@ Create a main function in your C++ application and define your API endpoints usi
 #include "jetplusplus/server/server.hpp"
 
 int main() {
-    JETPP::Router router;
-    router.get("/your-endpoint",[](JETPP::Request &req, JETPP::Response &res)
+    jetpp::Router router;
+    router.get("/your-endpoint",[](jetpp::Request &req, jetpp::Response &res)
      { 
         //your logic here
      });
     
-    JETPP::Server server(router);
+    jetpp::Server server(router);
     server.start(8080);
     return 0;
 }
@@ -96,7 +96,7 @@ int main() {
 
 Simple GET route:
 ```cpp
-router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+router.get("/users", [](jetpp::Request &req, jetpp::Response &res)
     {
         res.send("Hello World"); 
     });
@@ -105,7 +105,7 @@ router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
 
 With custom status:
 ```cpp
-router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+router.get("/users", [](jetpp::Request &req, jetpp::Response &res)
     {
         res.status(200).send("Hello World"); 
     });
@@ -114,13 +114,13 @@ router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
 
 With json response:
 ```cpp
-router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+router.get("/users", [](jetpp::Request &req, jetpp::Response &res)
     {
-        JETPP::JsonValue users;
-        JETPP::JsonValue user;
-        user.setObject({{"name", JETPP::JsonValue("John Doe")}});
+        jetpp::JsonValue users;
+        jetpp::JsonValue user;
+        user.setObject({{"name", jetpp::JsonValue("John Doe")}});
 
-        std::vector<JETPP::JsonValue> usersVector;
+        std::vector<jetpp::JsonValue> usersVector;
         users.setArray(userVector)
         res.json(users);
     });
@@ -128,7 +128,7 @@ router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
 
 With dynamic route:
 ```cpp
-router.get("/users/:userid", [](JETPP::Request &req, JETPP::Response &res)
+router.get("/users/:userid", [](jetpp::Request &req, jetpp::Response &res)
     {
         std::string userid=req.params.userid;
         res.status(200).send(userid);
@@ -138,7 +138,7 @@ router.get("/users/:userid", [](JETPP::Request &req, JETPP::Response &res)
 With query params:
 
 ```cpp
-router.get("/users", [](JETPP::Request &req, JETPP::Response &res)
+router.get("/users", [](jetpp::Request &req, jetpp::Response &res)
     {
         std::string userid=req.query.userid;
         res.status(200).send(userid);
@@ -154,7 +154,7 @@ GET http://localhost:8080/users?userid=123
 
 Simple POST route:
 ```cpp
-router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
+router.post("/players", [](jetpp::Request &req, jetpp::Response &res)
     {
         res.send(200);
     });
@@ -162,9 +162,9 @@ router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
 
 Retrieve the body:
 ```cpp
-router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
+router.post("/players", [](jetpp::Request &req, jetpp::Response &res)
     {
-        JETPP::JsonValue body=req.body;
+        jetpp::JsonValue body=req.body;
         res.send(200);
     });
 ```
@@ -173,7 +173,7 @@ router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
 
 Simple PUT route:
 ```cpp
-router.put("/players", [](JETPP::Request &req, JETPP::Response &res)
+router.put("/players", [](jetpp::Request &req, jetpp::Response &res)
     {
         res.send(200);
     });
@@ -183,7 +183,7 @@ router.put("/players", [](JETPP::Request &req, JETPP::Response &res)
 
 Simple PATCH route:
 ```cpp
-router.patch("/players", [](JETPP::Request &req, JETPP::Response &res)
+router.patch("/players", [](jetpp::Request &req, jetpp::Response &res)
     {
         res.send(200);
     });
@@ -193,7 +193,7 @@ router.patch("/players", [](JETPP::Request &req, JETPP::Response &res)
 
 Simple DELETE route:
 ```cpp
-router.Delete("/players", [](JETPP::Request &req, JETPP::Response &res)
+router.Delete("/players", [](jetpp::Request &req, jetpp::Response &res)
     {
         res.send(200);
     });
@@ -203,7 +203,7 @@ router.Delete("/players", [](JETPP::Request &req, JETPP::Response &res)
 
 Simple OPTIONS route:
 ```cpp
-router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
+router.post("/players", [](jetpp::Request &req, jetpp::Response &res)
     {
         res.send(200);
     });
@@ -214,10 +214,10 @@ router.post("/players", [](JETPP::Request &req, JETPP::Response &res)
 
 ### Creating a Container
 
-To create a container, use the JETPP::Container class:
+To create a container, use the jetpp::Container class:
 
 ```cpp
-JETPP::Container myContainer;
+jetpp::Container myContainer;
 ```
 
 ### Adding Access Hosts
@@ -235,7 +235,7 @@ This example allows access only from the host with the IP address "127.0.0.1". Y
 Associate a container with a specific route to apply access restrictions. Pass the container as the last argument when defining a route:
 
 ```cpp
-router.get("/restricted-endpoint", [](JETPP::Request &req, JETPP::Response &res)
+router.get("/restricted-endpoint", [](jetpp::Request &req, jetpp::Response &res)
 {
     // Your logic here
 }, myContainer);
@@ -253,23 +253,23 @@ Now, the "/restricted-endpoint" route will only be accessible from hosts specifi
 
 int main()
 {
-    JETPP::Router router;
+    jetpp::Router router;
 
     // ... Your existing route definitions ...
 
     // Define a container and add an access host
-    JETPP::Container userProxyContainer;
+    jetpp::Container userProxyContainer;
     userProxyContainer.addAccessHost("127.0.0.1");
 
     // Associate the container with a route
-    router.get("/users/:user", [](JETPP::Request &req, JETPP::Response &res)
+    router.get("/users/:user", [](jetpp::Request &req, jetpp::Response &res)
                { 
                     std::string message="Success for users and :user= "+req.params["user"];
                     res.send(message); }, userProxyContainer);
 
     // ... Your existing route definitions ...
 
-    JETPP::Server server(router);
+    jetpp::Server server(router);
     server.start(8000);
 
     return 0;
