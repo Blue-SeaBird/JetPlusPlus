@@ -1,9 +1,11 @@
 .vscode
+.idea
 # CMake generated files
 CMakeFiles/
 CMakeCache.txt
 cmake_install.cmake
 Makefile
+cmake-build-debug/
 
 # Compiled binaries
 bin/
@@ -13,4 +15,4 @@ examples/*/build/
 
 # Compiled libraries
 lib/
-.DS_STORE
+.DS_Store

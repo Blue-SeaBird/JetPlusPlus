@@ -24,7 +24,7 @@ namespace jetpp
         Server(Router router);
         void start(int port);
         void sendResponse(int clientSocket, const char *response); // Change SOCKET to int
-        std::string getFullClientAddress(int clientSocket);
+        std::string getFullClientAddress(const std::string& request);
     };
 }
 

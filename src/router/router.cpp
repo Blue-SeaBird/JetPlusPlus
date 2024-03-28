@@ -80,11 +80,7 @@ namespace jetpp
             }
         }
 
-        for (const auto& existingContainer : this->containers)
-        {
-            auto containerCopy = std::make_unique<Container>(*existingContainer);
-            this->containers.push_back(std::move(containerCopy));
-        }
+        this->containers.push_back(container);
     }
 
 
@@ -92,7 +88,7 @@ namespace jetpp
     void Router::addRoute(const std::string &routeurl, jetpp::Methods method, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container){
         Route route(routeurl, method, callback);
 
-        //this->checkContainer(container);
+        this->checkContainer(container);
         container->addRoute(route);
     }
 
@@ -209,12 +205,9 @@ namespace jetpp
     bool Router::checkAccess(std::shared_ptr<Container>& container, std::string clientAddress) {
         if (container->getAccessList().empty()) return true;
 
-        size_t colonPos = clientAddress.find(":");
-        std::string addressWithoutPort = (colonPos != std::string::npos) ? clientAddress.substr(0, colonPos) : clientAddress;
-
         for (const auto& address : container->getAccessList())
         {
-            if (address == addressWithoutPort)
+            if (address == clientAddress)
             {
                 return true; // Client address found in the access list
             }

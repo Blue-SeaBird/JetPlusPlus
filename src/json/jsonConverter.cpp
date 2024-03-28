@@ -1,5 +1,5 @@
-#include "jetplusplus/json/jsonConverter.hpp"
-//#include <regex>
+#include "../../include/jetplusplus/json/jsonConverter.hpp"
+#include <regex>
 #include <algorithm>
 
 namespace jetpp{    
@@ -58,10 +58,15 @@ namespace jetpp{
     }
 
     jetpp::JsonValue JsonConverter::stringToJson(std::string value) {
+        if(value.empty()){
+            jetpp::JsonValue emptyValue;
+            return emptyValue;
+        }
+
         JsonValue valueJson;
 
-        /*std::regex whiteSpaceRegex("\\s+");
-        value = std::regex_replace(value, whiteSpaceRegex, "");*/
+        std::regex whiteSpaceRegex("\\s+");
+        value = std::regex_replace(value, whiteSpaceRegex, "");
 
         char firstChar = value.empty() ? '\0' : value[0];
 
@@ -93,7 +98,10 @@ namespace jetpp{
                 }
             }
 
-            if(valueSegments.empty())valueSegments.push_back(slicedArray);
+            if(valueSegments.empty()){
+                
+                splitString(slicedArray,valueSegments,',');
+            }
 
             for (const std::string &v : valueSegments) {
                 values.push_back(stringToJson(v));
@@ -157,5 +165,16 @@ namespace jetpp{
         }
 
         return valueJson;
+    }
+
+    void JsonConverter::splitString(std::string str, std::vector<std::string> &segments, char delimiter)
+    {
+        std::istringstream isstream(str);
+        std::string segment;
+        while (std::getline(isstream, segment, delimiter))
+        {
+            segments.push_back(segment);
+        }
+        segments.shrink_to_fit();
     }
 }

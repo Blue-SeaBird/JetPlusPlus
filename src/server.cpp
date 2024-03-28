@@ -129,8 +129,8 @@ namespace jetpp
                     try
                     {
                         std::string clientAddress=getFullClientAddress(request);
-                        std::cout << "ClientAddress: " << clientAddress << std::endl;
                         std::optional<Route> optRoute = this->router.findRoute(url, stringToMethod(method), clientAddress);
+                        
                         if(!optRoute.has_value()){
                             const char *response = "HTTP/1.1 401 Unauthorized\r\nContent-Length: 0\r\n\r\n";
                             sendResponse(clientSocket, response);

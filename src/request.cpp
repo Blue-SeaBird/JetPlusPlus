@@ -80,6 +80,8 @@ namespace jetpp
                 size_t bodyLength = std::stoi(request.substr(contentLengthPos + 16, bodyStart - contentLengthPos - 16));
                 // Extract the request body
                 this->body = request.substr(bodyStart + 4, bodyLength);
+            }else{
+                this->body="";
             }
         }
     }
@@ -102,7 +104,6 @@ namespace jetpp
                 {
                     std::string headerKey = headerLine.substr(0, colonPos);
                     std::string headerValue = headerLine.substr(colonPos + 1);
-
                     this->headers[headerKey] = headerValue;
                 }
             }
