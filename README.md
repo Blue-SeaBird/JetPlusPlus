@@ -214,10 +214,10 @@ router.post("/players", [](jetpp::Request &req, jetpp::Response &res)
 
 ### Creating a Container
 
-To create a container, use the jetpp::Container class:
+To create a container, use the jetpp::Container class and make a shared pointer:
 
 ```cpp
-jetpp::Container myContainer;
+std::shared_ptr<jetpp::Container> myContainer = std::make_shared<jetpp::Container>();
 ```
 
 ### Adding Access Hosts
@@ -225,7 +225,7 @@ jetpp::Container myContainer;
 You can specify hosts that are allowed to access your API. Use the addAccessHost method:
 
 ```cpp
-myContainer.addAccessHost("127.0.0.1");
+myContainer->addAccessHost("127.0.0.1");
 ```
 
 This example allows access only from the host with the IP address "127.0.0.1". You can add multiple hosts as needed.
@@ -258,8 +258,8 @@ int main()
     // ... Your existing route definitions ...
 
     // Define a container and add an access host
-    jetpp::Container userProxyContainer;
-    userProxyContainer.addAccessHost("127.0.0.1");
+    std::shared_ptr<jetpp::Container> userProxyContainer = std::make_shared<jetpp::Container>();
+    userProxyContainer->addAccessHost("127.0.0.1");
 
     // Associate the container with a route
     router.get("/users/:user", [](jetpp::Request &req, jetpp::Response &res)
