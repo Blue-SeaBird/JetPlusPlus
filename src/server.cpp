@@ -96,7 +96,30 @@ namespace jetpp
                         size_t contentLengthPos = request.find("Content-Length: ");
                         if (contentLengthPos != std::string::npos)
                         {
-                            size_t bodyLength = std::stoi(request.substr(contentLengthPos + 16, bodyStart - contentLengthPos - 16));
+                            size_t bodyLength = 0;
+
+                            try {
+                                size_t startPos = contentLengthPos + 16;
+                                size_t length = bodyStart - startPos;
+                                
+                                if (length > 0) {
+                                    std::string lengthStr = request.substr(startPos, length);
+                                    bodyLength = std::stoul(lengthStr); // Use stoul for unsigned integers
+                                } else {
+                                    std::cerr << "Invalid Content-Length format" << std::endl;
+                                    close(clientSocket);
+                                    break;
+                                }
+                            } catch (const std::invalid_argument& e) {
+                                std::cerr << "Invalid Content-Length value: " << e.what() << std::endl;
+                                close(clientSocket);
+                                break;
+                            } catch (const std::out_of_range& e) {
+                                std::cerr << "Content-Length value out of range: " << e.what() << std::endl;
+                                close(clientSocket);
+                                break;
+                            }
+
                             if (bodyStart + 4 + bodyLength <= totalBytesRead)
                             {
                                 break;
@@ -164,14 +187,14 @@ namespace jetpp
         std::size_t hostPos = request.find("Host:");
         if (hostPos == std::string::npos) {
             std::cerr << "Host name not found in request header" << std::endl;
-            return nullptr;
+            return "";
         }
 
         // Find the end of the line containing the host information
         std::size_t endOfLine = request.find("\r\n", hostPos);
         if (endOfLine == std::string::npos) {
             std::cerr << "Invalid request format" << std::endl;
-            return nullptr;
+            return "";
         }
 
         // Extract the host information from the request

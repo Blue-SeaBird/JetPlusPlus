@@ -23,7 +23,7 @@ namespace jetpp
         else
         {
             std::cerr << "Unsupported method: " << method << std::endl;
-            throw std::invalid_argument("Invalid method");
+            throw std::invalid_argument("Invalid HTTP method");
         }
     }
 

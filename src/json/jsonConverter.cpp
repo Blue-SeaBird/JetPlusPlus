@@ -65,8 +65,8 @@ namespace jetpp{
 
         JsonValue valueJson;
 
-        std::regex whiteSpaceRegex("\\s+");
-        value = std::regex_replace(value, whiteSpaceRegex, "");
+        //std::regex whiteSpaceRegex("\\s+");
+        //value = std::regex_replace(value, whiteSpaceRegex, "");
 
         char firstChar = value.empty() ? '\0' : value[0];
 
@@ -135,7 +135,12 @@ namespace jetpp{
                 }
             }
 
-            if(valueSegments.empty())valueSegments.push_back(slicedObject);
+            //if(valueSegments.empty())valueSegments.push_back(slicedObject);
+
+            if(valueSegments.empty()){
+                
+                splitString(slicedObject,valueSegments,',');
+            }
 
             for (const std::string &v : valueSegments) {
                 size_t colonPos = v.find(':');
@@ -160,8 +165,15 @@ namespace jetpp{
             valueJson.setString(stringValue);
         } else if (firstChar == 't' || firstChar == 'f') { // Convert boolean
             valueJson.setBoolean(value == "true");
-        }else { // Convert number
-            valueJson.setNumber(std::stod(value));
+        }else{
+            char *endPtr;
+            double numericValue = strtod(value.c_str(), &endPtr);
+            
+            if (*endPtr == '\0') {
+                valueJson.setNumber(numericValue);
+            }else{
+                valueJson.setString(value);
+            }
         }
 
         return valueJson;
