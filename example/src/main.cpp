@@ -15,7 +15,7 @@ int main(){
         res.status(200).send("Hi");
     },c);
 
-    router.post("/test",[](jetpp::Request &req, jetpp::Response &res){
+    router.post("/test",[&](jetpp::Request &req, jetpp::Response &res){
         jetpp::JsonConverter jsonConverter;
         std::string body=req.body;
         jetpp::JsonValue value=jsonConverter.stringToJson(body);

@@ -9,62 +9,62 @@ namespace jetpp
         this->containers.push_back(defaultContainer);
     }
 
-    void Router::get(const std::string &routeurl, void (*callback)(Request &, Response &))
+    void Router::get(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
         this->addRoute(routeurl, jetpp::Methods::Get, callback, this->containers.front());
     }
 
-    void Router::post(const std::string &routeurl, void (*callback)(Request &, Response &))
+    void Router::post(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
         this->addRoute(routeurl, jetpp::Methods::Post, callback, this->containers.front());
     }
 
-    void Router::put(const std::string &routeurl, void (*callback)(Request &, Response &))
+    void Router::put(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
         this->addRoute(routeurl, jetpp::Methods::Put, callback, this->containers.front());
     }
 
-    void Router::patch(const std::string &routeurl, void (*callback)(Request &, Response &))
+    void Router::patch(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
         this->addRoute(routeurl, jetpp::Methods::Patch, callback, this->containers.front());
     }
 
-    void Router::Delete(const std::string &routeurl, void (*callback)(Request &, Response &))
+    void Router::Delete(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
         this->addRoute(routeurl, jetpp::Methods::Delete, callback, this->containers.front());
     }
 
-    void Router::options(const std::string &routeurl, void (*callback)(Request &, Response &))
+    void Router::options(const std::string &routeurl, std::function<void(Request &, Response &)> callback)
     {
         this->addRoute(routeurl, jetpp::Methods::Options, callback, this->containers.front());
     }
 
-    void Router::get(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container)
+    void Router::get(const std::string &routeurl, std::function<void(Request &, Response &)> callback, std::shared_ptr<Container>& container)
     {
         this->addRoute(routeurl, jetpp::Methods::Get, callback, container);
     }
 
-    void Router::post(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container)
+    void Router::post(const std::string &routeurl, std::function<void(Request &, Response &)> callback, std::shared_ptr<Container>& container)
     {
         this->addRoute(routeurl, jetpp::Methods::Post, callback, container);
     }
 
-    void Router::put(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container)
+    void Router::put(const std::string &routeurl, std::function<void(Request &, Response &)> callback, std::shared_ptr<Container>& container)
     {
         this->addRoute(routeurl, jetpp::Methods::Put, callback, container);
     }
 
-     void Router::patch(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container)
+     void Router::patch(const std::string &routeurl, std::function<void(Request &, Response &)> callback, std::shared_ptr<Container>& container)
     {
         this->addRoute(routeurl, jetpp::Methods::Patch, callback, container);
     }
 
-     void Router::Delete(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container)
+     void Router::Delete(const std::string &routeurl, std::function<void(Request &, Response &)> callback, std::shared_ptr<Container>& container)
     {
         this->addRoute(routeurl, jetpp::Methods::Delete, callback, container);
     }
 
-    void Router::options(const std::string &routeurl, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container)
+    void Router::options(const std::string &routeurl, std::function<void(Request &, Response &)> callback, std::shared_ptr<Container>& container)
     {
         this->addRoute(routeurl, jetpp::Methods::Options, callback, container);
     }
@@ -85,7 +85,7 @@ namespace jetpp
 
 
     
-    void Router::addRoute(const std::string &routeurl, jetpp::Methods method, void (*callback)(Request &, Response &), std::shared_ptr<Container>& container){
+    void Router::addRoute(const std::string &routeurl, jetpp::Methods method, std::function<void(Request &, Response &)> callback, std::shared_ptr<Container>& container){
         Route route(routeurl, method, callback);
 
         this->checkContainer(container);
@@ -101,7 +101,7 @@ namespace jetpp
             {
                 if (route.getMethod() == method)
                 {
-                    if (request == route.getName()) // if it's not a dynamic URL, check if the request URL is absolutely equal to a route
+                    if (request == route.getRouteurl()) // if it's not a dynamic URL, check if the request URL is absolutely equal to a route
                     {
                         bool access = this->checkAccess(container, clientAddress);
                         if (access)
@@ -110,14 +110,14 @@ namespace jetpp
                         }
                         return std::nullopt;
                     }
-                    else if (route.getName().find(':') != std::string::npos)
+                    else if (route.getRouteurl().find(':') != std::string::npos)
                     {
                         bool match = true;
 
                         // split the URLs
                         std::vector<std::string> routeSplitted;
                         std::vector<std::string> requestSplitted;
-                        splitRoute(route.getName(), routeSplitted, '/');
+                        splitRoute(route.getRouteurl(), routeSplitted, '/');
                         splitRoute(request, requestSplitted, '/');
 
                         // check for an equal amount of segments
@@ -176,7 +176,7 @@ namespace jetpp
                                 }
                             }
                         }
-                        if (route.getName() == url)
+                        if (route.getRouteurl() == url)
                         {
                             bool access = this->checkAccess(container, clientAddress);
                             if (access)

@@ -4,16 +4,16 @@
 
 namespace jetpp
 {
-    Route::Route(std::string name, jetpp::Methods method, void (*callback)(Request &, Response &))
+    Route::Route(std::string routeurl, jetpp::Methods method, std::function<void(Request &, Response &)> callback)
     {
-        this->name = name;
+        this->routeurl = routeurl;
         this->method = method;
         this->callback = callback;
     }
 
-    std::string Route::getName()
+    std::string Route::getRouteurl()
     {
-        return this->name;
+        return this->routeurl;
     }
 
     jetpp::Methods Route::getMethod()
@@ -29,7 +29,7 @@ namespace jetpp
         }
         catch (const std::runtime_error &)
         {
-            std::cout << "Couldn't execute callback function of route: " << this->getName() << std::endl;
+            std::cout << "Couldn't execute callback function of route: " << this->getRouteurl() << std::endl;
         }
     }
 }

@@ -137,7 +137,7 @@ namespace jetpp
                         }
                         else{
                             Route route=optRoute.value();
-                            Request req(url, route.getName(), request);
+                            Request req(url, route.getRouteurl(), request);
                             Response res(clientSocket);
                             route.execute(req, res);
                         }
